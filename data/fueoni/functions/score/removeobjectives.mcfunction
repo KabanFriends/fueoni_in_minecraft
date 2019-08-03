@@ -1,31 +1,7 @@
 #Function file for "FUEONI in Minecraft"
 #Made by KabanFriends
 
-scoreboard objectives remove foSetupCheck
-scoreboard objectives remove foGameTimer
-scoreboard objectives remove foEndTimer
-scoreboard objectives remove foIngamePlayers
-scoreboard objectives remove foGamePlayer
-scoreboard objectives remove foRunnersLeft
-scoreboard objectives remove foOniLeft
-scoreboard objectives remove foGameJoinQueue
-scoreboard objectives remove foSecondsLeft
-scoreboard objectives remove foSelectedOni
-scoreboard objectives remove foAdminTrigger
-scoreboard objectives remove foDeathCount
-scoreboard objectives remove foAliveTime
-scoreboard objectives remove foPlayerKills
-scoreboard objectives remove foHasLobby
-scoreboard objectives remove foHasGameMaster
-scoreboard objectives remove foHasSneakPlayer
-scoreboard objectives remove foHasOptionData
-scoreboard objectives remove foLeaveGame
-scoreboard objectives remove foOniSelectTimer
-scoreboard objectives remove foReleaseTimer
-scoreboard objectives remove foTimeTimer
-scoreboard objectives remove foHasOniQueue
-scoreboard objectives remove foSneakTime
-scoreboard objectives remove foSneakStatus
-scoreboard objectives remove foOptionMinutes
+scoreboard objectives remove foGameOption
+scoreboard objectives remove foGameData
 scoreboard objectives remove foIngameSidebar
 scoreboard objectives remove foListSidebar
