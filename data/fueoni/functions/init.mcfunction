@@ -1,11 +1,14 @@
 #Function file for "FUEONI in Minecraft"
 #Made by KabanFriends
 
-say 初期化を開始しています…
 gamerule commandBlockOutput false
 gamerule logAdminCommands false
-kill @e[tag=foGameMaster]
-summon armor_stand 0 0 0 {Tags:["foGameMaster"],Invisible:true,Invulnerable:true,Marker:true,Small:true,NoGravity:true}
-function fueoni:score/addobjectives
-function fueoni:team/addteams
-say 初期化が完了しました。
+function fueoni:score/remove_objectives
+function fueoni:team/remove_teams
+function fueoni:score/add_objectives
+function fueoni:team/add_teams
+
+#DEFAULT SETTINGS
+scoreboard players set game_minutes foGameOption 3
+
+scoreboard players set init_done foGameOption 1
