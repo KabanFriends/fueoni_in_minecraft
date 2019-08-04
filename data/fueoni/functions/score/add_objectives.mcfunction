@@ -6,3 +6,6 @@ scoreboard objectives add foListSidebar dummy [{"text":"増え鬼","color":"yell
 scoreboard objectives add foGameOption dummy
 scoreboard objectives add foGameData dummy
 scoreboard objectives add foSneakTime minecraft.custom:minecraft.sneak_time
+scoreboard objectives add foAliveTime minecraft.custom:minecraft.time_since_death
+scoreboard objectives add foDeathCount minecraft.custom:minecraft.deaths
+scoreboard objectives add foQuitGame minecraft.custom:minecraft.leave_game
