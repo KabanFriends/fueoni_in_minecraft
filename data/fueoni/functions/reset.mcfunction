@@ -11,4 +11,4 @@ kill @e[tag=foGameEntity]
 clear @a[tag=foGamePlayer]
 effect clear @a[tag=foGamePlayer]
 team join foGameJoinQueue @a[tag=foGamePlayer]
-function fueoni:player/tplobby_all
+execute as @a[tag=foGamePlayer] run function fueoni:player/tplobby_all

@@ -129,7 +129,7 @@ execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePla
 execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] instant_health 1000000 250 true
 execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] saturation 1000000 250 true
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
-execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 5
+execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 20
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foListSidebar
 execute if score game_mode foGameData matches 2 run scoreboard players operation game_ticksec foGameData = game_timer foGameData
 execute if score game_mode foGameData matches 2 run scoreboard players operation game_ticksec foGameData %= num_20 foGameData
