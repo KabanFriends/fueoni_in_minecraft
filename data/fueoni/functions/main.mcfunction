@@ -209,7 +209,7 @@ execute if score game_mode foGameData matches 4 run effect give @a[tag=foGamePla
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players set num_60 foGameData 60
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players reset @a[tag=foGamePlayer] foDeathCount
-execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players reset @a[tag=foGamePlayer] foAliveTime
+execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players set @a[tag=foGamePlayer] foAliveTime 3
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foIngameSidebar
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players operation game_timeleft foGameData = game_minutes foGameOption
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players operation game_timeleft foGameData *= num_60 foGameData
@@ -287,6 +287,8 @@ execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,nbt={Acti
 execute if score game_mode foGameData matches 4 if score all_onis foGameData matches ..0 run scoreboard players set game_winner foGameData 1
 #oni wins
 execute if score game_mode foGameData matches 4 if score all_runners foGameData matches ..0 run scoreboard players set game_winner foGameData 2
+#timer ran out
+execute if score game_mode foGameData matches 4 if score game_timeleft foGameData matches ..0 run scoreboard players set game_winner foGameData 3
 #set gamemode to 5 after winning
 execute if score game_mode foGameData matches 4 if score game_winner foGameData matches 1.. run scoreboard players set game_timer foGameData 0
 execute if score game_mode foGameData matches 4 if score game_winner foGameData matches 1.. run scoreboard players set game_mode foGameData 5
@@ -301,6 +303,8 @@ execute if score game_mode foGameData matches 5 if score game_timer foGameData m
 execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 if score game_winner foGameData matches 1 run title @a[tag=foGamePlayer] subtitle {"text":"全ての鬼がいなくなった！"}
 execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 if score game_winner foGameData matches 2 run title @a[tag=foGamePlayer] title {"text":"鬼の勝利","color":"red","bold":"true"}
 execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 if score game_winner foGameData matches 2 run title @a[tag=foGamePlayer] subtitle {"text":"逃走者が全員つかまった！"}
+execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 if score game_winner foGameData matches 3 run title @a[tag=foGamePlayer] title {"text":"逃走者の勝利","color":"green","bold":"true"}
+execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 if score game_winner foGameData matches 3 run title @a[tag=foGamePlayer] subtitle {"text":"制限時間切れになった！"}
 execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 100.. run function fueoni:reset
 
 #GLOBAL INGAME SIDEBAR
