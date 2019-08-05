@@ -11,4 +11,4 @@ scoreboard objectives add foAliveTime minecraft.custom:minecraft.time_since_deat
 scoreboard objectives add foDeathCount minecraft.custom:minecraft.deaths
 scoreboard objectives add foQuitGame minecraft.custom:minecraft.leave_game
 scoreboard objectives add foRNGBase minecraft.custom:minecraft.play_one_minute
-scoreboard objectives add foUseEye minecraft.used:minecraft.ender_eye
+scoreboard objectives add foUsePearl minecraft.used:minecraft.ender_pearl
