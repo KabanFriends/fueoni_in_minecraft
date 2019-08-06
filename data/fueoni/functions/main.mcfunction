@@ -274,6 +274,7 @@ execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOn
 #item: eye
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foClickStick=1..}] run execute as @a[tag=foGamePlayer] at @s run playsound entity.evoker.prepare_summon voice @s ~ ~ ~ 50.0 1.0
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foClickStick=1..}] run tellraw @a[tag=foGamePlayer] [{"text":""},{"text":"増え鬼","color":"yellow","bold":"true"},{"text":" » ","color":"gray"},{"text":"誰かが透視を使いました！","color":"aqua","bold":"true"},{"text":" これから"},{"text":"10秒間","color":"gold"},{"text":"、鬼の位置が光って見えます！"}]
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foClickStick=1..}] run clear @s carrot_on_a_stick 1
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foClickStick=1..}] run effect give @a[tag=foGamePlayer,team=foOni] glowing 10 0 true
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foClickStick=1..}] run scoreboard players reset @s foClickStick
 #item: kill oni
