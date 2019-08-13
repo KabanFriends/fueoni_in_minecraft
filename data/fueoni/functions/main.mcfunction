@@ -102,10 +102,9 @@ execute if score game_mode foGameData matches 1 if score lobby_z foGameOption ma
 execute if score game_mode foGameData matches 1 if score all_players foGameData matches 2.. run scoreboard players add game_checks foGameData 1
 execute if score game_mode foGameData matches 1 unless score all_players foGameData matches 2.. run scoreboard players set game_noplayer foGameData 1
 #check pass
-execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run scoreboard players add game_checks foGameData 1
-execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run tp @a[tag=foGamePlayer] @e[tag=foStartLocation,limit=1]
-execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run tag @a[tag=foGamePlayer] add foOniSelection
+execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. as @e[tag=foStartLocation] run tp @a[tag=foGamePlayer] @s
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. as @a[tag=foGamePlayer] run function fueoni:player/remove_tags
+execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run tag @a[tag=foGamePlayer] add foOniSelection
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run gamemode adventure @a[tag=foGamePlayer]
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run clear @a[tag=foGamePlayer]
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run scoreboard objectives setdisplay sidebar foListSidebar
