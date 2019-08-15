@@ -4,6 +4,7 @@
 team add foGameJoinQueue
 team modify foGameJoinQueue prefix [{"text":"","color":"aqua"}]
 team modify foGameJoinQueue color aqua
+team modify foGameJoinQueue friendlyFire false
 team add foRunner
 team modify foRunner prefix [{"text":"","color":"green"}]
 team modify foRunner color green
