@@ -79,7 +79,7 @@ clear @a[tag=foGamePlayer,scores={foQuitGame=1..}]
 execute if score game_mode foGameData matches 4.. run gamemode spectator @a[tag=foGamePlayer,scores={foQuitGame=1..}]
 execute if score game_mode foGameData matches 4.. run tp @a[tag=foGamePlayer,scores={foQuitGame=1..}] @a[tag=foGamePlayer,sort=random,limit=1]
 #reset quit game score
-scoreboard players reset @a[tag=foGamePlayer,scores={foQuitGame=1..}] foQuitGame
+scoreboard players reset @a[scores={foQuitGame=1..}] foQuitGame
 
 #CREATE LIST SIDEBAR
 scoreboard players operation 参加人数 foListSidebar = all_players foGameData 
