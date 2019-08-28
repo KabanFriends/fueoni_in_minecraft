@@ -75,6 +75,10 @@ execute as @a[tag=foGamePlayer] run execute as @s[tag=foOniSelection] run scoreb
 execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] run function fueoni:player/remove_tags
 team join foGameJoinQueue @a[tag=foGamePlayer,scores={foQuitGame=1..}]
 clear @a[tag=foGamePlayer,scores={foQuitGame=1..}]
+#turn into spectator if the game already started
+execute if score game_mode foGameData matches 4.. run gamemode spectator @a[tag=foGamePlayer,scores={foQuitGame=1..}]
+execute if score game_mode foGameData matches 4.. run tp @a[tag=foGamePlayer,scores={foQuitGame=1..}] @a[tag=foGamePlayer,sort=random,limit=1]
+#reset quit game score
 scoreboard players reset @a[tag=foGamePlayer,scores={foQuitGame=1..}] foQuitGame
 
 #CREATE LIST SIDEBAR
