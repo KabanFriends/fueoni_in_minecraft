@@ -239,6 +239,7 @@ execute if score game_mode foGameData matches 4 run scoreboard players reset @a[
 execute if score game_mode foGameData matches 4 run clear @a[tag=foGamePlayer,team=foOni,scores={foAliveTime=2}]
 execute if score game_mode foGameData matches 4 run replaceitem entity @a[tag=foGamePlayer,team=foOni,scores={foAliveTime=2}] armor.chest minecraft:leather_chestplate{display:{Name:"{\"text\":\"鬼の服\",\"color\":\"red\",\"bold\":true,\"italic\":false}",Lore:["{\"text\":\"トマトジュースで染まった\",\"color\":\"gray\",\"italic\":\"false\"}","{\"text\":\"きれいな赤色！\",\"color\":\"gray\",\"italic\":\"false\"}"],color:16711680},HideFlags:63,Unbreakable:1b,Enchantments:[{id:"minecraft:protection",lvl:127s},{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
 execute if score game_mode foGameData matches 4 run tp @a[tag=foGamePlayer,scores={foAliveTime=2}] @e[tag=foStartLocation,limit=1]
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foAliveTime=2}] run tellraw @s [{"text":""},{"text":"増え鬼","color":"yellow","bold":"true"},{"text":" » ","color":"gray"},{"text":"つかまってしまった！","color":"red","bold":"true"},{"text":" あなたは鬼になりました。"}]
 execute if score game_mode foGameData matches 4 run scoreboard players set @a[tag=foGamePlayer,scores={foAliveTime=3..}] foAliveTime 3
 #rng creation
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer] run scoreboard players set @a[tag=foGamePlayer,scores={foRNGBase=4..}] foRNGBase 0
@@ -285,7 +286,7 @@ execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOn
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:14b,Amplifier:0b}]}] run effect clear @s minecraft:invisibility
 #item: eye
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run execute as @a[tag=foGamePlayer] at @s run playsound entity.evoker.prepare_summon voice @s ~ ~ ~ 50.0 1.0
-execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run tellraw @a[tag=foGamePlayer] [{"text":""},{"text":"増え鬼","color":"yellow","bold":"true"},{"text":" » ","color":"gray"},{"text":"誰かが透視玉を使いました！","color":"light_purple","bold":"true"},{"text":" これから"},{"text":"10秒間","color":"gold"},{"text":"、鬼の位置が光って見えます！"}]
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run tellraw @a[tag=foGamePlayer] [{"text":""},{"text":"増え鬼","color":"yellow","bold":"true"},{"text":" » ","color":"gray"},{"text":"誰かが透視の目を使いました！","color":"light_purple","bold":"true"},{"text":" これから"},{"text":"10秒間","color":"gold"},{"text":"、鬼の位置が光って見えます！"}]
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run effect give @a[tag=foGamePlayer,team=foOni] glowing 10 0 true
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] at @s run kill @e[type=ender_pearl,distance=..5]
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run scoreboard players reset @s foUseEnderPearl
