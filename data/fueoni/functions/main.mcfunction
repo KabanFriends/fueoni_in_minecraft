@@ -128,9 +128,9 @@ execute if score game_mode foGameData matches 1 unless score game_checks foGameD
 
 #GAMEMODE 2: BEFORE ONI SELECTION
 execute if score game_mode foGameData matches 2 run scoreboard players add game_timer foGameData 1
-execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] resistance 1000000 255 true
-execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] instant_health 1000000 250 true
-execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] saturation 1000000 250 true
+execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] resistance 1000000 127 true
+execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] instant_health 1000000 127 true
+execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePlayer] saturation 1000000 127 true
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 15
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foListSidebar
@@ -170,13 +170,13 @@ execute if score game_mode foGameData matches 2 if score game_timeleft foGameDat
 
 #GAMEMODE 3: ONI WAITING
 execute if score game_mode foGameData matches 3 run scoreboard players add game_timer foGameData 1
-execute if score game_mode foGameData matches 3 run effect give @a[tag=foGamePlayer] resistance 1000000 255 true
-execute if score game_mode foGameData matches 3 run effect give @a[tag=foGamePlayer] instant_health 1000000 250 true
-execute if score game_mode foGameData matches 3 run effect give @a[tag=foGamePlayer] saturation 1000000 250 true
+execute if score game_mode foGameData matches 3 run effect give @a[tag=foGamePlayer] resistance 1000000 127 true
+execute if score game_mode foGameData matches 3 run effect give @a[tag=foGamePlayer] instant_health 1000000 127 true
+execute if score game_mode foGameData matches 3 run effect give @a[tag=foGamePlayer] saturation 1000000 127 true
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 15
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foIngameSidebar
-execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] blindness 1000000 255 true
+execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] blindness 1000000 0 true
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] levitation 1000000 255 true
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run replaceitem entity @a[tag=foGamePlayer,team=foOni] armor.chest minecraft:leather_chestplate{display:{Name:"{\"text\":\"鬼の服\",\"color\":\"red\",\"bold\":true,\"italic\":false}",Lore:["{\"text\":\"トマトジュースで染まった\",\"color\":\"gray\",\"italic\":\"false\"}","{\"text\":\"きれいな赤色！\",\"color\":\"gray\",\"italic\":\"false\"}"],color:16711680},HideFlags:63,Unbreakable:1b,Enchantments:[{id:"minecraft:protection",lvl:127s},{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
 execute if score game_mode foGameData matches 3 run scoreboard players operation game_ticksec foGameData = game_timer foGameData
@@ -207,8 +207,8 @@ execute if score game_mode foGameData matches 3 if score game_timeleft foGameDat
 #GAMEMODE 4: MAIN
 execute if score game_mode foGameData matches 4 run scoreboard players add game_timer foGameData 1
 execute if score game_mode foGameData matches 4 run scoreboard players add item_timer foGameData 1
-execute if score game_mode foGameData matches 4 run effect give @a[tag=foGamePlayer] saturation 1000000 250 true
-execute if score game_mode foGameData matches 4 run effect give @a[tag=foGamePlayer,team=foOni] strength 1000000 250 true
+execute if score game_mode foGameData matches 4 run effect give @a[tag=foGamePlayer] saturation 1000000 127 true
+execute if score game_mode foGameData matches 4 run effect give @a[tag=foGamePlayer,team=foOni] strength 1000000 127 true
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players set num_60 foGameData 60
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players reset @a[tag=foGamePlayer] foDeathCount
@@ -307,9 +307,9 @@ execute if score game_mode foGameData matches 4 if score game_winner foGameData 
 
 #GAMEMODE 5: ENDING
 execute if score game_mode foGameData matches 5 run scoreboard players add game_timer foGameData 1
-execute if score game_mode foGameData matches 5 run effect give @a[tag=foGamePlayer] saturation 1000000 250 true
-execute if score game_mode foGameData matches 5 run effect give @a[tag=foGamePlayer] resistance 1000000 255 true
-execute if score game_mode foGameData matches 5 run effect give @a[tag=foGamePlayer] instant_health 1000000 250 true
+execute if score game_mode foGameData matches 5 run effect give @a[tag=foGamePlayer] saturation 1000000 127 true
+execute if score game_mode foGameData matches 5 run effect give @a[tag=foGamePlayer] resistance 1000000 127 true
+execute if score game_mode foGameData matches 5 run effect give @a[tag=foGamePlayer] instant_health 1000000 127 true
 execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:entity.player.levelup voice @s ~ ~ ~ 50.0 1.0
 execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 if score game_winner foGameData matches 1 run title @a[tag=foGamePlayer] title {"text":"逃走者の勝利","color":"green","bold":"true"}
 execute if score game_mode foGameData matches 5 if score game_timer foGameData matches 1 if score game_winner foGameData matches 1 run title @a[tag=foGamePlayer] subtitle {"text":"全ての鬼がいなくなった！"}
