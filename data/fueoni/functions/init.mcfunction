@@ -13,5 +13,6 @@ function fueoni:bossbar/add_bossbar
 
 #DEFAULT SETTINGS
 scoreboard players set game_minutes foGameOption 3
+scoreboard players set sessionID foGameOption 0
 
 scoreboard players set init_done foGameOption 1

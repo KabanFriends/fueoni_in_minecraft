@@ -12,3 +12,4 @@ scoreboard objectives remove foQuitGame
 scoreboard objectives remove foRNGBase
 scoreboard objectives remove foEntityTick
 scoreboard objectives remove foUseEnderPearl
+scoreboard objectives remove foPlayerSID

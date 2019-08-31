@@ -72,12 +72,25 @@ execute as @a[tag=foGamePlayer,team=foOni] run scoreboard players add all_onis f
 execute as @a[tag=foGamePlayer] run execute as @s[tag=foOniSelection] run scoreboard players add all_onisels foGameData 1
 
 #REJOINED PLAYERS
-execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] run function fueoni:player/remove_tags
-team join foGameJoinQueue @a[tag=foGamePlayer,scores={foQuitGame=1..}]
-clear @a[tag=foGamePlayer,scores={foQuitGame=1..}]
-#turn into spectator if the game already started
-execute if score game_mode foGameData matches 4.. run gamemode spectator @a[tag=foGamePlayer,scores={foQuitGame=1..}]
-execute if score game_mode foGameData matches 4.. run tp @a[tag=foGamePlayer,scores={foQuitGame=1..}] @a[tag=foGamePlayer,sort=random,limit=1]
+#before oni selection -> teleport to game start location
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 1..2 run function fueoni:player/remove_tags
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 1..2 run team join foGameJoinQueue @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 1..2 run clear @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 1..2 run gamemode adventure @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 1..2 run tp @s @e[tag=foStartLocation,limit=1]
+#after oni selection -> rejoin in same game -> continue
+#after oni selection -> rejoin in different game -> spectator / teleport to random player
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 3..4 unless score @s foPlayerSID = sessionID foGameOption run function fueoni:player/remove_tags
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 3..4 unless score @s foPlayerSID = sessionID foGameOption run team join foGameJoinQueue @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 3..4 unless score @s foPlayerSID = sessionID foGameOption run clear @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 3..4 unless score @s foPlayerSID = sessionID foGameOption run gamemode spectator @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 3..4 unless score @s foPlayerSID = sessionID foGameOption run tp @s @a[tag=foGamePlayer,sort=random,limit=1]
+#after winning -> spectator / teleport to random player
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 5 run function fueoni:player/remove_tags
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 5 run team join foGameJoinQueue @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 5 run clear @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 5 run gamemode spectator @s
+execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGameData matches 5 run tp @s @a[tag=foGamePlayer,sort=random,limit=1]
 #reset quit game score
 scoreboard players reset @a[scores={foQuitGame=1..}] foQuitGame
 
@@ -111,6 +124,8 @@ execute if score game_mode foGameData matches 1 if score game_checks foGameData 
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run tag @a[tag=foGamePlayer] add foOniSelection
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run gamemode adventure @a[tag=foGamePlayer]
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run clear @a[tag=foGamePlayer]
+execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run scoreboard players add sessionID foGameOption 1
+execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run scoreboard players operation @a[tag=foGamePlayer] foPlayerSID = sessionID foGameOption
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run scoreboard objectives setdisplay sidebar foListSidebar
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run tellraw @a[tag=foGamePlayer] [{"text":""},{"text":"増え鬼","color":"yellow","bold":"true"},{"text":" » ","color":"gray"},{"text":"このあとゲームが参加者","color":"green"},{"score":{"name":"all_players","objective":"foGameData"},"color":"gold","bold":"true"},{"text":"人","color":"gold","bold":"true"},{"text":"で始まります！","color":"green"}]
 execute if score game_mode foGameData matches 1 if score game_checks foGameData matches 4.. run tellraw @a[tag=foGamePlayer] [{"text":""},{"text":"増え鬼","color":"yellow","bold":"true"},{"text":" » ","color":"gray"},{"text":"1人目の鬼になりたい人は、","color":"gold"},{"text":"赤い輪の中","color":"red","bold":"true"},{"text":"に入ってください！","color":"gold"}]
