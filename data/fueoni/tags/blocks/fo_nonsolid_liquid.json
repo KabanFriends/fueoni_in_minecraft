@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:air",
+    "minecraft:cave_air",
+    "minecraft:void_air",
+    "minecraft:structure_void",
+    "minecraft:water",
+    "minecraft:lava",
+    "#minecraft:banners",
+    "#minecraft:buttons",
+    "#minecraft:carpets",
+    "#minecraft:rails",
+    "#minecraft:saplings",
+    "#minecraft:signs",
+    "#minecraft:small_flowers"
+  ]
+}
