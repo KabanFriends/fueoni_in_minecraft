@@ -3,3 +3,4 @@
 
 tag @s remove foTempOni
 tag @s remove foOniSelection
+tag @s remove foItemWarn
