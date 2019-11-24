@@ -9,7 +9,9 @@ scoreboard objectives remove foSneakTime
 scoreboard objectives remove foAliveTime
 scoreboard objectives remove foDeathCount
 scoreboard objectives remove foQuitGame
-scoreboard objectives remove foRNGBase
+scoreboard objectives remove foItemSpawnTimer
+scoreboard objectives remove foItemSpawnType
+scoreboard objectives remove foSpawnTimerEnd
 scoreboard objectives remove foEntityTick
 scoreboard objectives remove foUseEnderPearl
 scoreboard objectives remove foPlayerSID

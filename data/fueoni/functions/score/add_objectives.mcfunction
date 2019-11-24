@@ -7,9 +7,11 @@ scoreboard objectives add foGameOption dummy
 scoreboard objectives add foGameData dummy
 scoreboard objectives add foEntityTick dummy
 scoreboard objectives add foPlayerSID dummy
+scoreboard objectives add foItemSpawnTimer dummy
+scoreboard objectives add foItemSpawnType dummy
+scoreboard objectives add foSpawnTimerEnd dummy
 scoreboard objectives add foSneakTime minecraft.custom:minecraft.sneak_time
 scoreboard objectives add foAliveTime minecraft.custom:minecraft.time_since_death
 scoreboard objectives add foDeathCount minecraft.custom:minecraft.deaths
 scoreboard objectives add foQuitGame minecraft.custom:minecraft.leave_game
-scoreboard objectives add foRNGBase minecraft.custom:minecraft.play_one_minute
 scoreboard objectives add foUseEnderPearl minecraft.used:minecraft.ender_pearl

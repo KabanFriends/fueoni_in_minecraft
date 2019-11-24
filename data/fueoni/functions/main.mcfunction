@@ -221,7 +221,6 @@ execute if score game_mode foGameData matches 3 if score game_timeleft foGameDat
 
 #GAMEMODE 4: MAIN
 execute if score game_mode foGameData matches 4 run scoreboard players add game_timer foGameData 1
-execute if score game_mode foGameData matches 4 run scoreboard players add item_timer foGameData 1
 execute if score game_mode foGameData matches 4 run effect give @a[tag=foGamePlayer] saturation 1000000 127 true
 execute if score game_mode foGameData matches 4 run effect give @a[tag=foGamePlayer,team=foOni] strength 1000000 127 true
 execute if score game_mode foGameData matches 4 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
@@ -256,9 +255,6 @@ execute if score game_mode foGameData matches 4 run replaceitem entity @a[tag=fo
 execute if score game_mode foGameData matches 4 run tp @a[tag=foGamePlayer,scores={foAliveTime=2}] @e[tag=foStartLocation,limit=1]
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foAliveTime=2}] run tellraw @s [{"text":""},{"text":"増え鬼","color":"yellow","bold":"true"},{"text":" » ","color":"gray"},{"text":"つかまってしまった！","color":"red","bold":"true"},{"text":" あなたは鬼になりました。"}]
 execute if score game_mode foGameData matches 4 run scoreboard players set @a[tag=foGamePlayer,scores={foAliveTime=3..}] foAliveTime 3
-#rng creation
-execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer] run scoreboard players set @a[tag=foGamePlayer,scores={foRNGBase=4..}] foRNGBase 0
-execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer] run scoreboard players set @a[tag=foGamePlayer,scores={foRNGBase=..-1}] foRNGBase 0
 #set item
 execute if score game_mode foGameData matches 4 run scoreboard players add @e[tag=foItemEntity] foEntityTick 1
 execute if score game_mode foGameData matches 4 as @e[tag=foNeedItem,scores={foEntityTick=2}] run execute as @s[tag=foEye] run data merge entity @s {ArmorItems:[{},{},{},{id:"minecraft:player_head",Count:1b,tag:{SkullOwner:{Id:"36122cdc-6c97-4b97-990a-ef4df57db922",Properties:{textures:[{Value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGFhOGZjOGRlNjQxN2I0OGQ0OGM4MGI0NDNjZjUzMjZlM2Q5ZGE0ZGJlOWIyNWZjZDQ5NTQ5ZDk2MTY4ZmMwIn19fQ=="}]}}}}],CustomName:"{\"text\":\"透視\",\"color\":\"aqua\",\"bold\":true}"}
@@ -267,12 +263,18 @@ execute if score game_mode foGameData matches 4 as @e[tag=foNeedItem,scores={foE
 execute if score game_mode foGameData matches 4 as @e[tag=foNeedItem,scores={foEntityTick=2}] run execute as @s[tag=foKillOni] run data merge entity @s {Tags:["foKillOni","foGameEntity","foItemEntity"],ArmorItems:[{},{},{},{id:"minecraft:player_head",Count:1b,tag:{SkullOwner:{Id:"498ddc33-8486-468f-bf0c-f788034d724d",Properties:{textures:[{Value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2IzOWI1YWFkNWVjZmY5NDY3M2NjYTRmOTFmZTc0ZWQyYTQyODhjZjY3M2E3NzAxMGY3NTcwZjFhNTc1MjAifX19"}]}}}}],CustomName:"{\"text\":\"鬼退治\",\"color\":\"red\",\"bold\":true}"}
 execute if score game_mode foGameData matches 4 run tag @e[tag=foNeedItem,scores={foEntityTick=2}] remove foNeedItem
 #item spawning
-execute if score game_mode foGameData matches 4 if score item_timer foGameData matches 631 as @a[tag=foGamePlayer,team=foRunner,scores={foRNGBase=0}] at @s run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foEye","foGameEntity","foItemEntity"],DisabledSlots:4144959}
-execute if score game_mode foGameData matches 4 if score item_timer foGameData matches 631 as @a[tag=foGamePlayer,team=foRunner,scores={foRNGBase=1}] at @s run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foSpeed","foGameEntity","foItemEntity"],DisabledSlots:4144959}
-execute if score game_mode foGameData matches 4 if score item_timer foGameData matches 631 as @a[tag=foGamePlayer,team=foRunner,scores={foRNGBase=2}] at @s run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foInvisible","foGameEntity","foItemEntity"],DisabledSlots:4144959}
-execute if score game_mode foGameData matches 4 if score item_timer foGameData matches 631 as @a[tag=foGamePlayer,team=foRunner,scores={foRNGBase=3}] at @s run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foKillOni","foGameEntity","foItemEntity"],DisabledSlots:4144959}
-execute if score game_mode foGameData matches 4 if score item_timer foGameData matches 631 as @a[tag=foGamePlayer,team=foRunner] at @s run spreadplayers ~ ~ 30 30 false @e[tag=foItemEntity,limit=1,sort=nearest]
-execute if score game_mode foGameData matches 4 if score item_timer foGameData matches 631.. run scoreboard players set item_timer foGameData 0
+#increase timer
+execute if score game_mode foGameData matches 4 run scoreboard players add @a[tag=foGamePlayer,team=foRunner] foItemSpawnTimer 1
+#create rng numbers
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foSpawnTimerEnd run loot spawn ~ ~ ~ loot fueoni:fo_rng_spawntimer
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foItemSpawnType run loot spawn ~ ~ ~ loot fueoni:fo_rng_itemtype
+#detect timer and spawn
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 0 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foEye","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 1 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foSpeed","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 2 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foInvisible","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 3 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foKillOni","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+#reset timer
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd run scoreboard players set @s foItemSpawnTimer 0
 #teleport item entity
 execute if score game_mode foGameData matches 4 as @e[tag=foNeedTeleport] at @s run function fueoni:entity/random_tp
 #rotate and kill item entity
