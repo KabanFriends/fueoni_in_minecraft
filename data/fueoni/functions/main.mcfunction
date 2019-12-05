@@ -149,6 +149,7 @@ execute if score game_mode foGameData matches 2 run effect give @a[tag=foGamePla
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 15
 execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foListSidebar
+execute if score game_mode foGameData matches 2 if score game_timer foGameData matches 1 run scoreboard players set @a[tag=foGamePlayer] foAliveTime 3
 execute if score game_mode foGameData matches 2 run scoreboard players operation game_ticksec foGameData = game_timer foGameData
 execute if score game_mode foGameData matches 2 run scoreboard players operation game_ticksec foGameData %= num_20 foGameData
 execute if score game_mode foGameData matches 2 if score game_timeleft foGameData matches 2.. if score game_ticksec foGameData matches 0 run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:block.note_block.hat voice @s ~ ~ ~ 1.0 1.0
@@ -182,6 +183,9 @@ execute if score game_mode foGameData matches 2 if score game_timeleft foGameDat
 #change gamemode
 execute if score game_mode foGameData matches 2 if score game_timeleft foGameData matches ..0 if score game_ticksec foGameData matches 0 run scoreboard players set game_timer foGameData 0
 execute if score game_mode foGameData matches 2 if score game_timeleft foGameData matches ..0 if score game_ticksec foGameData matches 0 run scoreboard players set game_mode foGameData 3
+#respawn
+execute if score game_mode foGameData matches 2 run tp @a[tag=foGamePlayer,scores={foAliveTime=2}] @e[tag=foStartLocation,limit=1]
+execute if score game_mode foGameData matches 2 run scoreboard players set @a[tag=foGamePlayer,scores={foAliveTime=3..}] foAliveTime 3
 
 #GAMEMODE 3: ONI WAITING
 execute if score game_mode foGameData matches 3 run scoreboard players add game_timer foGameData 1
@@ -191,6 +195,7 @@ execute if score game_mode foGameData matches 3 run effect give @a[tag=foGamePla
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 15
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foIngameSidebar
+execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run scoreboard players set @a[tag=foGamePlayer] foAliveTime 3
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] blindness 1000000 0 true
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] levitation 1000000 255 true
 execute if score game_mode foGameData matches 3 if score game_timer foGameData matches 1 run replaceitem entity @a[tag=foGamePlayer,team=foOni] armor.chest minecraft:leather_chestplate{display:{Name:"{\"text\":\"鬼の服\",\"color\":\"red\",\"bold\":true,\"italic\":false}",Lore:["{\"text\":\"トマトジュースで染まった\",\"color\":\"gray\",\"italic\":\"false\"}","{\"text\":\"きれいな赤色！\",\"color\":\"gray\",\"italic\":\"false\"}"],color:16711680},HideFlags:63,Unbreakable:1b,Enchantments:[{id:"minecraft:protection",lvl:127s},{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
@@ -218,6 +223,9 @@ execute if score game_mode foGameData matches 3 if score game_timeleft foGameDat
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run scoreboard players reset 鬼解放まで(秒) foIngameSidebar
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run scoreboard players set game_timer foGameData 0
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run scoreboard players set game_mode foGameData 4
+#respawn
+execute if score game_mode foGameData matches 3 run tp @a[tag=foGamePlayer,scores={foAliveTime=2}] @e[tag=foStartLocation,limit=1]
+execute if score game_mode foGameData matches 3 run scoreboard players set @a[tag=foGamePlayer,scores={foAliveTime=3..}] foAliveTime 3
 
 #GAMEMODE 4: MAIN
 execute if score game_mode foGameData matches 4 run scoreboard players add game_timer foGameData 1
