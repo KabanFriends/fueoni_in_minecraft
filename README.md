@@ -9,9 +9,9 @@
 「増え鬼 in Minecraft」を導入する際、Minecraftのバージョンとデータバックのバージョンに注意してください。
 
 ワールドのバージョンが
-- Minecraft 1.16.x以下の場合:  **バージョン1.0.1**以下
-- Minecraft 1.17.xの場合: **バージョン1.1.0**
-- Minecraft 1.18.xの場合: **バージョン1.2.0**
+- Minecraft 1.16.x以下の場合:  [**バージョン1.0.1**](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.0.1)以下
+- Minecraft 1.17.xの場合: [**バージョン1.1.0**](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.1.0)
+- Minecraft 1.18.x以上の場合: [**バージョン1.2.0**](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.2.0)以上
 
 を使用してください。
 
