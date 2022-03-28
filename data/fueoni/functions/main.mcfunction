@@ -326,9 +326,10 @@ execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={f
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run scoreboard players reset @s foUseEnderPearl
 #item: kill oni
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run clear @s
-execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run tellraw @s [{"text":""},{"text":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray"},{"text":"あなたは","color":"gold"},{"text":"鬼退治","color":"red","bold":true},{"text":"されました！","color":"gold"},{"text":" 退治されて、スポーン地点に戻されました。"}]
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run tellraw @s [{"text":""},{"text":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray"},{"text":"鬼退治","color":"red","bold":true},{"text":"されてしまった！","color":"gold"}]
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect give @s slowness 5 2 true
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect give @s blindness 5 0 true
-execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run tp @s @e[tag=foStartLocation,limit=1]
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run teleport @s ~ ~ ~ ~180 ~
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect clear @s unluck
 #kill arrows in ground
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer] at @s run kill @e[type=arrow,nbt={inGround:true},distance=..30]
