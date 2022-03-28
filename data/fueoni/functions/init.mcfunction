@@ -1,9 +1,9 @@
 #Function file for "FUEONI in Minecraft"
 #Made by KabanFriends
 
+gamerule maxCommandChainLength 65536
 gamerule commandBlockOutput false
 gamerule logAdminCommands false
-gamerule maxCommandChainLength 65536
 function fueoni:score/remove_objectives
 function fueoni:team/remove_teams
 function fueoni:bossbar/remove_bossbar
