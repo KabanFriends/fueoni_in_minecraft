@@ -329,7 +329,7 @@ execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOn
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run tellraw @s [{"text":""},{"text":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray"},{"text":"鬼退治","color":"red","bold":true},{"text":"されてしまった！","color":"gold"}]
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect give @s slowness 5 2 true
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect give @s blindness 5 0 true
-execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run teleport @s ~ ~ ~ ~180 ~
+execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] at @s run teleport @s ~ ~ ~ ~180 ~
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect clear @s unluck
 #kill arrows in ground
 execute if score game_mode foGameData matches 4 as @a[tag=foGamePlayer] at @s run kill @e[type=arrow,nbt={inGround:true},distance=..30]
