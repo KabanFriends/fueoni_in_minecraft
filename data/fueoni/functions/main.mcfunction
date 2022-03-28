@@ -208,7 +208,7 @@ execute if score game_mode foGameData matches 3 if score game_timeleft foGameDat
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] times 0 40 0
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] title {"text":"解放待機中","color":"yellow","bold":true}
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] subtitle [{"text":"あと"},{"score":{"name":"game_timeleft","objective":"foGameData"},"color":"aqua","bold":true},{"text":"秒","color":"aqua","bold":true},{"text":"…"}]
-execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 1.. at @e[tag=foStartLocation] run teleport @a[tag=foGamePlayer,team=foOni] ~ -10 ~ ~ 90.0
+execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 1.. at @e[tag=foStartLocation] run teleport @a[tag=foGamePlayer,team=foOni] ~ -80 ~ ~ 90.0
 #count 0
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run effect clear @a[tag=foGamePlayer,team=foOni] blindness
 execute if score game_mode foGameData matches 3 if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run effect clear @a[tag=foGamePlayer,team=foOni] levitation
