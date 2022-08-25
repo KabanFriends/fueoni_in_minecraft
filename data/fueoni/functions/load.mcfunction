@@ -1,6 +1,7 @@
 #Function file for "FUEONI in Minecraft"
 #Made by KabanFriends
 
+gamerule maxCommandChainLength 65536
 say 「増え鬼 in Minecraft」を準備しています…
 forceload add 0 0
 function fueoni:score/add_objectives
