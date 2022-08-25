@@ -50,10 +50,10 @@ execute as @e[tag=foChangeTime] at @s run execute as @a[distance=..5,scores={foS
 execute as @e[tag=foChangeTime,tag=!foHasSneaker] at @s run execute as @a[distance=..5] at @s run playsound minecraft:block.wooden_button.click_on voice @s ~ ~ ~ 1.0 1.8
 execute as @e[tag=foChangeTime,tag=!foHasSneaker] run scoreboard players add game_minutes foGameOption 1 
 execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 1 run execute as @a[distance=..5] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
-execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 1 run tellraw @a[distance=..5] [{"text":""},{"text":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray"},{"text":"ゲームの長さは","color":"red"},{"text":"1分以上","color":"gold"},{"text":"である必要があります。","color":"red"}]
+execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 1 run tellraw @a[distance=..5] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"ゲームの長さは%1$sである必要があります。","color":"red","with":[{"translate":"1分以上","color":"gold"}]}]
 execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 2.. run execute as @a[distance=..5] at @s run playsound minecraft:block.wooden_button.click_on voice @s ~ ~ ~ 1.0 1.0
 execute as @e[tag=foChangeTime,tag=foHasSneaker] if score game_minutes foGameOption matches 2.. run scoreboard players remove game_minutes foGameOption 1
-execute as @e[tag=foChangeTime] at @s run title @a[distance=..5] actionbar [{"text":""},{"text":">","color":"gray","bold":true},{"text":" ゲームの長さ: ","color":"green"},{"score":{"name":"game_minutes","objective":"foGameOption"},"color":"aqua","bold":true},{"text":"分間","color":"aqua","bold":true}]
+execute as @e[tag=foChangeTime] at @s run title @a[distance=..5] actionbar [{"text":""},{"text":">","color":"gray","bold":true},{"text":" "},{"translate":"ゲームの長さ: %1$s","color":"green","with":[{"translate":"%1$s分間","color":"aqua","bold":true,"with":[{"score":{"name":"game_minutes","objective":"foGameOption"},"color":"aqua","bold":true}]}]}]
 
 #DELETE ADMIN ENTITIES
 kill @e[tag=foAdminEntity]
@@ -89,7 +89,8 @@ execute as @a[tag=foGamePlayer,scores={foQuitGame=1..}] if score game_mode foGam
 scoreboard players reset @a[scores={foQuitGame=1..}] foQuitGame
 
 #CREATE LIST SIDEBAR
-scoreboard players operation 参加人数 foListSidebar = all_players foGameData 
+team join foPlayerCount §r
+scoreboard players operation §r foListSidebar = all_players foGameData 
 scoreboard players set @a[tag=foGamePlayer] foListSidebar 0
 scoreboard players reset @a[tag=!foGamePlayer] foListSidebar
 
@@ -105,5 +106,7 @@ execute if score game_mode foGameData matches 4 run function fueoni:gamemodes/4_
 execute if score game_mode foGameData matches 5 run function fueoni:gamemodes/5_ending
 
 #GLOBAL INGAME SIDEBAR
-execute if score game_mode foGameData matches 3..4 run scoreboard players operation §c鬼§rの数 foIngameSidebar = all_onis foGameData
-execute if score game_mode foGameData matches 3..4 run scoreboard players operation §a逃走者§rの数 foIngameSidebar = all_runners foGameData
+execute if score game_mode foGameData matches 3..4 run team join foOniCount §r§r
+execute if score game_mode foGameData matches 3..4 run scoreboard players operation §r§r foIngameSidebar = all_onis foGameData
+execute if score game_mode foGameData matches 3..4 run team join foRunnerCount §r§r§r
+execute if score game_mode foGameData matches 3..4 run scoreboard players operation §r§r§r foIngameSidebar = all_runners foGameData
