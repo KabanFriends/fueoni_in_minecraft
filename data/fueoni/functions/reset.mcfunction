@@ -12,4 +12,4 @@ clear @a[tag=foGamePlayer]
 effect clear @a[tag=foGamePlayer]
 team join foGameJoinQueue @a[tag=foGamePlayer]
 gamemode adventure @a[tag=foGamePlayer,gamemode=spectator]
-execute as @a[tag=foGamePlayer] run function fueoni:player/tplobby_all
+function fueoni:player/tplobby_all
