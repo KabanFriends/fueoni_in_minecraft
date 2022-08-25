@@ -5,9 +5,9 @@
 execute as @e[nbt={Inventory:[{id:"minecraft:command_block",tag:{display:{Name:'{"text":"fueoni"}'}}}]}] run function fueoni:player/admin
 
 #ADMIN ENTITY: SET LOBBY
-execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_x foGameOption run data get entity @s Pos[0] 1
-execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_y foGameOption run data get entity @s Pos[1] 1
-execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_z foGameOption run data get entity @s Pos[2] 1
+execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_xpos foGameOption run data get entity @s Pos[0] 100
+execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_ypos foGameOption run data get entity @s Pos[1] 100
+execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_zpos foGameOption run data get entity @s Pos[2] 100
 execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] at @s run particle minecraft:end_rod ~ ~ ~ 0 3 0 0 100 force @a
 
 #ADMIN ENTITY: ADD PLAYERS
