@@ -40,8 +40,8 @@ execute as @e[tag=foStartAllPlayers] at @s run tag @a[tag=!foGamePlayer] add foG
 execute as @e[tag=foStartAllPlayers] at @s run function fueoni:start
 
 #ADMIN ENTITY: END GAME
-execute as @e[tag=foEndGame] run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
 execute as @e[tag=foEndGame] run function fueoni:reset
+execute as @e[tag=foEndGame] run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
 execute as @e[tag=foEndGame] run kill @e[tag=foGameEntity]
 execute as @e[tag=foEndGame] run team join foGameJoinQueue @a[tag=foGamePlayer]
 
