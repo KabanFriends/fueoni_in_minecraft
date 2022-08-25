@@ -6,6 +6,3 @@ execute store result entity @s Pos[1] double 1 run scoreboard players get lobby_
 execute store result entity @s Pos[2] double 1 run scoreboard players get lobby_z foGameOption
 
 execute at @s run tp @a[tag=foTPLobbyTarget] ~0.5 ~ ~0.5 0 0
-
-tag @a[tag=foTPLobbyTarget] remove foTPLobbyTarget
-kill @s
