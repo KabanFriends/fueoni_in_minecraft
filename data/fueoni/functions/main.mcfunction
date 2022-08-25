@@ -102,7 +102,7 @@ execute if score game_mode foGameData matches 1 run function fueoni:gamemodes/1_
 execute if score game_mode foGameData matches 2 run function fueoni:gamemodes/2_pre_oni_select
 execute if score game_mode foGameData matches 3 run function fueoni:gamemodes/3_oni_waiting
 execute if score game_mode foGameData matches 4 run function fueoni:gamemodes/4_game_main
-execute if score game_mode foGameData matches 4 run function fueoni:gamemodes/5_ending
+execute if score game_mode foGameData matches 5 run function fueoni:gamemodes/5_ending
 
 #GLOBAL INGAME SIDEBAR
 execute if score game_mode foGameData matches 3..4 run scoreboard players operation §c鬼§rの数 foIngameSidebar = all_onis foGameData

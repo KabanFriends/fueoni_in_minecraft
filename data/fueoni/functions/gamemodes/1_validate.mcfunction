@@ -29,7 +29,6 @@ execute if score game_checks foGameData matches 4.. run tellraw @a[tag=foGamePla
 execute if score game_checks foGameData matches 4.. run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:entity.player.levelup voice @s ~ ~ ~ 1.0 1.0
 execute if score game_checks foGameData matches 4.. at @e[tag=foStartLocation] run particle minecraft:flame ~ ~ ~ 0 3 0 0 100 force @a
 execute if score game_checks foGameData matches 4.. run scoreboard players set game_mode foGameData 2
-execute if score game_checks foGameData matches 4.. run scoreboard players set game_timer foGameData 1
 #check fail
 execute unless score game_checks foGameData matches 4.. as @e[tag=foStartLocation] at @s run execute as @a[distance=..5] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
 execute unless score game_checks foGameData matches 4.. unless score game_noplayer foGameData matches 1 as @e[tag=foStartLocation] at @s run tellraw @a[distance=..5] [{"text":""},{"text":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray"},{"text":"ロビー地点が設定されていません。","color":"red"}]
