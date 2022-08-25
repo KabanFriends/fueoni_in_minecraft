@@ -3,5 +3,5 @@
 
 summon armor_stand 0 0 0 {Tags:["foTPLobbyTemp"],Invisible:true,Invulnerable:true,NoGravity:true,Marker:true,Small:true}
 execute as @e[tag=foTPLobbyTemp] at @s run function fueoni:entity/tplobby
-tp @a[tag=foGamePlayer] @e[tag=foTPLobbyTemp,limit=1]
+execute at @e[tag=foTPLobbyTemp] run tp @a[tag=foTPLobbyTarget] ~0.5 ~ ~0.5 0 0
 kill @e[tag=tpLobbyTemp]
