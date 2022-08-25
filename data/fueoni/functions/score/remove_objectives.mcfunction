@@ -3,7 +3,6 @@
 
 scoreboard objectives remove foIngameSidebar
 scoreboard objectives remove foListSidebar
-scoreboard objectives remove foTemp
 scoreboard objectives remove foGameOption
 scoreboard objectives remove foGameData
 scoreboard objectives remove foSneakTime

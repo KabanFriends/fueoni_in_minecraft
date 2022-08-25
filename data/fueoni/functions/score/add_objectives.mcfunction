@@ -3,7 +3,6 @@
 
 scoreboard objectives add foIngameSidebar dummy [{"translate":"増え鬼 %1$s","color":"yellow","bold":true,"with":[{"translate":"[ゲーム中]","color":"gold","bold":false}]}]
 scoreboard objectives add foListSidebar dummy [{"translate":"増え鬼 %1$s","color":"yellow","bold":true,"with":[{"translate":"[参加者]","color":"gold","bold":false}]}]
-scoreboard objectives add foTemp dummy
 scoreboard objectives add foGameOption dummy
 scoreboard objectives add foGameData dummy
 scoreboard objectives add foEntityTick dummy
