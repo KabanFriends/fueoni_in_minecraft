@@ -12,7 +12,7 @@ execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] at @s run particle mi
 
 #ADMIN ENTITY: ADD PLAYERS
 execute as @e[tag=foAddPlayers] at @s run execute as @a[tag=!foGamePlayer,distance=..3] run function fueoni:player/join
-execute as @e[tag=foAddPlayers] at @s run summon armor_stand ~ ~ ~ {Tags:["foAddParticleOrigin"],Invisible:true,Invulnerable:true,Marker:true,NoGravity:true,Small:true}
+execute as @e[tag=foAddPlayers] at @s run summon marker ~ ~ ~ {Tags:["foAddParticleOrigin"]}
 execute as @e[tag=foAddParticleOrigin] at @s run particle minecraft:crit ~ ~ ~ 0 3 0 0 100 force @a
 execute as @e[tag=foAddParticleOrigin] at @s run function fueoni:particle/circle_happy_villager
 kill @e[tag=foAddParticleOrigin]
@@ -22,7 +22,7 @@ execute as @e[tag=foShowJoinedPlayers] at @s run scoreboard objectives setdispla
 
 #ADMIN ENTITY: REMOVE PLAYERS
 execute as @e[tag=foRemovePlayers] at @s run execute as @a[tag=foGamePlayer,distance=..3,team=foGameJoinQueue] run function fueoni:player/quit
-execute as @e[tag=foRemovePlayers] at @s run summon armor_stand ~ ~ ~ {Tags:["foRemoveParticleOrigin"],Invisible:true,Invulnerable:true,Marker:true,NoGravity:true,Small:true}
+execute as @e[tag=foRemovePlayers] at @s run summon marker ~ ~ ~ {Tags:["foRemoveParticleOrigin"]}
 execute as @e[tag=foRemoveParticleOrigin] at @s run particle minecraft:crit ~ ~ ~ 0 3 0 0 100 force @a
 execute as @e[tag=foRemoveParticleOrigin] at @s run function fueoni:particle/circle_reddust
 kill @e[tag=foRemoveParticleOrigin]
@@ -54,6 +54,9 @@ execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foG
 execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 2.. run execute as @a[distance=..5] at @s run playsound minecraft:block.wooden_button.click_on voice @s ~ ~ ~ 1.0 1.0
 execute as @e[tag=foChangeTime,tag=foHasSneaker] if score game_minutes foGameOption matches 2.. run scoreboard players remove game_minutes foGameOption 1
 execute as @e[tag=foChangeTime] at @s run title @a[distance=..5] actionbar [{"text":""},{"text":">","color":"gray","bold":true},{"text":" ゲームの長さ: ","color":"green"},{"score":{"name":"game_minutes","objective":"foGameOption"},"color":"aqua","bold":true},{"text":"分間","color":"aqua","bold":true}]
+
+#DELETE ADMIN ENTITIES
+kill @e[tag=foAdminEntity]
 
 #VARIOUS DATA COLLECTION
 scoreboard players add game_minutes foGameOption 0
@@ -107,14 +110,14 @@ scoreboard players reset @a[scores={foSneakTime=1..}] foSneakTime
 execute if score game_mode foGameData matches 1 run scoreboard players set game_checks foGameData 0
 execute if score game_mode foGameData matches 1 run scoreboard players set game_noplayer foGameData 0
 #check 1 - lobby x
-execute if score game_mode foGameData matches 1 if score lobby_x foGameOption matches 1.. run scoreboard players add game_checks foGameData 1
-execute if score game_mode foGameData matches 1 if score lobby_x foGameOption matches ..0 run scoreboard players add game_checks foGameData 1
+execute if score game_mode foGameData matches 1 if score lobby_xpos foGameOption matches 1.. run scoreboard players add game_checks foGameData 1
+execute if score game_mode foGameData matches 1 if score lobby_xpos foGameOption matches ..0 run scoreboard players add game_checks foGameData 1
 #check 2 - lobby y
-execute if score game_mode foGameData matches 1 if score lobby_y foGameOption matches 1.. run scoreboard players add game_checks foGameData 1
-execute if score game_mode foGameData matches 1 if score lobby_y foGameOption matches ..0 run scoreboard players add game_checks foGameData 1
+execute if score game_mode foGameData matches 1 if score lobby_ypos foGameOption matches 1.. run scoreboard players add game_checks foGameData 1
+execute if score game_mode foGameData matches 1 if score lobby_ypos foGameOption matches ..0 run scoreboard players add game_checks foGameData 1
 #check 3 - lobby z
-execute if score game_mode foGameData matches 1 if score lobby_z foGameOption matches 1.. run scoreboard players add game_checks foGameData 1
-execute if score game_mode foGameData matches 1 if score lobby_z foGameOption matches ..0 run scoreboard players add game_checks foGameData 1
+execute if score game_mode foGameData matches 1 if score lobby_zpos foGameOption matches 1.. run scoreboard players add game_checks foGameData 1
+execute if score game_mode foGameData matches 1 if score lobby_zpos foGameOption matches ..0 run scoreboard players add game_checks foGameData 1
 #check 4 - players
 execute if score game_mode foGameData matches 1 if score all_players foGameData matches 2.. run scoreboard players add game_checks foGameData 1
 execute if score game_mode foGameData matches 1 unless score all_players foGameData matches 2.. run scoreboard players set game_noplayer foGameData 1
@@ -362,7 +365,3 @@ execute if score game_mode foGameData matches 5 if score game_timer foGameData m
 #GLOBAL INGAME SIDEBAR
 execute if score game_mode foGameData matches 3..4 run scoreboard players operation §c鬼§rの数 foIngameSidebar = all_onis foGameData
 execute if score game_mode foGameData matches 3..4 run scoreboard players operation §a逃走者§rの数 foIngameSidebar = all_runners foGameData
-
-#DELETE ADMIN ENTITIES
-tp @e[tag=foAdminEntity] ~ ~-5000 ~
-kill @e[tag=foAdminEntity]
