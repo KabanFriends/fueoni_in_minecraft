@@ -35,7 +35,7 @@ execute as @e[tag=foRemoveAllPlayers] run execute as @a[tag=foGamePlayer,team=fo
 execute as @e[tag=foStart] at @s run function fueoni:start
 
 #ADMIN ENTITY: START ALL PLAYERS
-execute as @e[tag=foStartAllPlayers] run team join foGameJoinQueue @a[tag=!foGamePlayer]
+execute as @e[tag=foStartAllPlayers] run team join foGameJoinQueue @a[team=!foGameJoinQueue]
 execute as @e[tag=foStartAllPlayers] at @s run tag @a[tag=!foGamePlayer] add foGamePlayer
 execute as @e[tag=foStartAllPlayers] at @s run function fueoni:start
 
