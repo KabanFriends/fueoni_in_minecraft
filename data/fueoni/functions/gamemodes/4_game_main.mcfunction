@@ -48,8 +48,8 @@ tag @e[tag=foNeedItem,scores={foEntityTick=2}] remove foNeedItem
 #increase timer
 scoreboard players add @a[tag=foGamePlayer,team=foRunner] foItemSpawnTimer 1
 #create rng numbers
-execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foSpawnTimerEnd run loot spawn ~ -500 ~ loot fueoni:fo_rng_spawntimer
-execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foItemSpawnType run loot spawn ~ -500 ~ loot fueoni:fo_rng_itemtype
+execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foSpawnTimerEnd run loot spawn ~ -500 ~ loot fueoni:rng_spawntimer
+execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foItemSpawnType run loot spawn ~ -500 ~ loot fueoni:rng_itemtype
 #detect timer and spawn
 execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 0 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foEye","foGameEntity","foItemEntity"],DisabledSlots:4144959}
 execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 1 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foSpeed","foGameEntity","foItemEntity"],DisabledSlots:4144959}
