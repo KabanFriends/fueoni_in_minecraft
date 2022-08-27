@@ -9,6 +9,7 @@ scoreboard objectives remove foRandom
 scoreboard objectives remove foAliveTime
 scoreboard objectives remove foDeathCount
 scoreboard objectives remove foQuitGame
+scoreboard objectives remove foInvisibleTimer
 scoreboard objectives remove foItemSpawnTimer
 scoreboard objectives remove foItemSpawnId
 scoreboard objectives remove foItemSpawnType
