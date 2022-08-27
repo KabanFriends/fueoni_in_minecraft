@@ -92,6 +92,11 @@ execute as @a[scores={foSettingsTime=..0}] run trigger foSettingsTrigger set 0
 #DELETE ADMIN ENTITIES
 kill @e[tag=foAdminEntity]
 
+#clear list sidebar every 2s
+scoreboard players add listbar_clear_timer foGameData 1
+execute if score listbar_clear_timer foGameData matches 40.. run scoreboard players reset * foListSidebar
+execute if score listbar_clear_timer foGameData matches 40.. run scoreboard players set listbar_clear_timer foGameData 0
+
 #VARIOUS DATA COLLECTION
 scoreboard players add game_minutes foGameOption 0
 
