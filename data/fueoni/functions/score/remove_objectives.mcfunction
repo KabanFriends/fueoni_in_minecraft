@@ -16,5 +16,4 @@ scoreboard objectives remove foSpawnTimerEnd
 scoreboard objectives remove foSettingsTime
 scoreboard objectives remove foSettingsTrigger
 scoreboard objectives remove foEntityTick
-scoreboard objectives remove foUseEnderPearl
 scoreboard objectives remove foPlayerSID

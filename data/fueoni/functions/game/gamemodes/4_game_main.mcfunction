@@ -68,45 +68,46 @@ execute as @e[tag=foNeedTeleport] at @s run function fueoni:entity/random_tp
 execute as @e[tag=foItemEntity] at @s run tp @s ~ ~ ~ ~3 ~
 execute as @e[tag=foItemEntity,scores={foEntityTick=1200..}] run kill @s
 #give item to runner
-execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foEye] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] ender_pearl{display:{Name:'{"translate":"透視の目","color":"aqua","bold":true,"italic":false}',Lore:['[{"translate":"%s$1すると数秒間","color":"gray","italic":false,"with":[{"translate":"右クリック","color":"gold","bold":false,"italic":false}]}]','{"translate":"鬼の位置がわかる。","color":"gray","italic":false}']},HideFlags:63,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}]}
-execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foSpeed] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] splash_potion{display:{Name:'{"translate":"スピードポーション","color":"aqua","bold":true,"italic":false}',Lore:['{"translate":"30秒間、早く走れるようになる。","color":"gray","italic":false}']},HideFlags:1,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}],CustomPotionEffects:[{Id:1b,Amplifier:0b,Duration:600}],CustomPotionColor:56831}
-execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foInvisible] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] potion{display:{Name:'{"translate":"透明化ポーション","color":"light_purple","bold":true,"italic":false}',Lore:['{"translate":"飲むと20秒間、透明になる。","color":"gray","italic":false}']},HideFlags:1,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}],CustomPotionEffects:[{Id:14b,Amplifier:0b,Duration:400,ShowParticles:0b}],CustomPotionColor:16717792}
+execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foEye] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] ender_eye{display:{Name:'{"translate":"透視の目","color":"aqua","bold":true,"italic":false}',Lore:['[{"translate":"%s$1すると数秒間","color":"gray","italic":false,"with":[{"translate":"右クリック","color":"gold","bold":false,"italic":false}]}]','{"translate":"鬼の位置がわかる。","color":"gray","italic":false}']},HideFlags:63,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}]}
+execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foSpeed] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] splash_potion{display:{Name:'{"translate":"スピードポーション","color":"aqua","bold":true,"italic":false}',Lore:['{"translate":"30秒間、早く走れるようになる。","color":"gray","italic":false}']},HideFlags:1,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}],CustomPotionEffects:[{Id:1,Amplifier:0b,Duration:600}],CustomPotionColor:56831}
+execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foInvisible] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] potion{display:{Name:'{"translate":"透明化ポーション","color":"light_purple","bold":true,"italic":false}',Lore:['{"translate":"飲むと20秒間、透明になる。","color":"gray","italic":false}']},HideFlags:1,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}],CustomPotionEffects:[{Id:14,Amplifier:0b,Duration:400,ShowParticles:0b}],CustomPotionColor:16717792}
 execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foKillOni] run clear @a[tag=foGamePlayer,team=foRunner,distance=..1] bow
-execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foKillOni] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] bow{HideFlags:63,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}]}
-execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foKillOni] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] tipped_arrow{display:{Name:'{"translate":"鬼退治の矢","color":"red","bold":true,"italic":false}',Lore:['{"translate":"この矢で鬼を撃つと","color":"gray","italic":false}','{"translate":"その鬼は進行方向の逆を向く。","color":"gray","italic":false}']},HideFlags:63,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}],CustomPotionEffects:[{Id:27b,Amplifier:0b,Duration:1000000,ShowParticles:0b}],CustomPotionColor:16711680}
+execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foKillOni] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] bow{HideFlags:63,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s},{id:"minecraft:punch",lvl:3s}]}
+execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] if entity @s[tag=foKillOni] run give @a[tag=foGamePlayer,team=foRunner,distance=..1] tipped_arrow{display:{Name:'{"translate":"鬼退治の矢","color":"red","bold":true,"italic":false}',Lore:['{"translate":"この矢で鬼を撃つと","color":"gray","italic":false}','{"translate":"その鬼は進行方向の逆を向く。","color":"gray","italic":false}']},HideFlags:63,Enchantments:[{id:"minecraft:vanishing_curse",lvl:1s}],CustomPotionEffects:[{Id:27,Amplifier:0b,Duration:1000000,ShowParticles:0b}],CustomPotionColor:16711680}
 execute as @e[tag=foItemEntity] at @s if entity @a[tag=foGamePlayer,team=foRunner,distance=..1] run kill @s
 #item warning for onis
 execute at @e[tag=foItemEntity] run execute as @a[tag=foGamePlayer,team=foOni,distance=..1] run execute as @s[tag=!foItemWarn] run tellraw @s [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼はアイテムを取ることができません！","color":"red"}]
 execute at @e[tag=foItemEntity] run tag @a[tag=foGamePlayer,team=foOni,distance=..1] add foItemWarn
 #item: speed
 #make sure onis cant get speed
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:1b,Amplifier:0b}]}] run tellraw @s [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼はスピードポーションを使えません！","color":"red"}]
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:1b,Amplifier:0b}]}] run effect clear @s minecraft:speed
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:1,Amplifier:0b}]}] run tellraw @s [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼はスピードポーションを使えません！","color":"red"}]
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:1,Amplifier:0b}]}] run effect clear @s minecraft:speed
 #item: invisible
 execute as @a[tag=foGamePlayer] run tag @s remove foInvisible
-execute as @a[tag=foGamePlayer] run tag @s[nbt={ActiveEffects:[{Id:14b,Amplifier:0b}]}] add foInvisible
+execute as @a[tag=foGamePlayer] run tag @s[nbt={ActiveEffects:[{Id:14,Amplifier:0b}]}] add foInvisible
 execute as @a[tag=foGamePlayer,team=foRunner] run item replace entity @s[tag=foInvisible] armor.chest with air
 execute as @a[tag=foGamePlayer,team=foRunner] unless entity @s[nbt={Inventory:[{Slot:102b,id:"minecraft:leather_chestplate"}]}] run item replace entity @s[tag=!foInvisible] armor.chest with minecraft:leather_chestplate{display:{Name:'{"translate":"逃走者の服","color":"green","bold":true,"italic":false}',Lore:['{"translate":"普通の服だよ","color":"gray","italic":false}','{"translate":"脱げないけどね","color":"gray","italic":false}'],color:65280},HideFlags:63,Unbreakable:1b,Enchantments:[{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
 execute as @a[tag=foGamePlayer,team=foOni] unless entity @s[nbt={Inventory:[{Slot:102b,id:"minecraft:leather_chestplate"}]}] run item replace entity @s[tag=!foInvisible] armor.chest with minecraft:leather_chestplate{display:{Name:'{"translate":"鬼の服","color":"red","bold":true,"italic":false}',Lore:['{"translate":"トマトジュースで染まった","color":"gray","italic":false}','{"translate":"きれいな赤色！","color":"gray","italic":false}'],color:16711680},HideFlags:63,Unbreakable:1b,Enchantments:[{id:"minecraft:protection",lvl:127s},{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
 #make sure onis cant get invisibility too
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:14b,Amplifier:0b}]}] run tellraw @s [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼は透明化ポーションを使えません！","color":"red"}]
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:14b,Amplifier:0b}]}] run tag @s remove foInvisible
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:14b,Amplifier:0b}]}] run effect clear @s minecraft:invisibility
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:14,Amplifier:0b}]}] run tellraw @s [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼は透明化ポーションを使えません！","color":"red"}]
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:14,Amplifier:0b}]}] run tag @s remove foInvisible
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:14,Amplifier:0b}]}] run effect clear @s minecraft:invisibility
 #clear empty bottles
 clear @a[tag=foGamePlayer] minecraft:glass_bottle
 #item: eye
-execute as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run execute as @a[tag=foGamePlayer] at @s run playsound entity.evoker.prepare_summon voice @s ~ ~ ~ 50.0 1.0
-execute as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run tellraw @a[tag=foGamePlayer] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"誰かが透視の目を使った！","color":"light_purple","bold":true},{"text":" "},{"translate":"これから%1$s、鬼の位置が光って見えます！","with":[{"translate":"%1$s秒間","color":"gold","with":[{"text":"10","color":"gold"}]}]}]
-execute as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run effect give @a[tag=foGamePlayer,team=foOni] glowing 10 0 true
-execute as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] at @s run kill @e[type=ender_pearl,distance=..5]
-execute as @a[tag=foGamePlayer,scores={foUseEnderPearl=1..}] run scoreboard players reset @s foUseEnderPearl
+execute as @a[tag=foGamePlayer,advancements={fueoni:item/ender_eye=true}] run clear @s ender_eye 1
+execute as @a[tag=foGamePlayer,advancements={fueoni:item/ender_eye=true}] run execute as @a[tag=foGamePlayer] at @s run playsound entity.evoker.prepare_summon voice @s ~ ~ ~ 50.0 1.0
+execute as @a[tag=foGamePlayer,advancements={fueoni:item/ender_eye=true}] run tellraw @a[tag=foGamePlayer] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"誰かが透視の目を使った！","color":"light_purple","bold":true},{"text":" "},{"translate":"これから%1$s、鬼の位置が光って見えます！","with":[{"translate":"%1$s秒間","color":"gold","with":[{"text":"10","color":"gold"}]}]}]
+execute as @a[tag=foGamePlayer,advancements={fueoni:item/ender_eye=true}] run effect give @a[tag=foGamePlayer,team=foOni] glowing 10 0 false
+execute as @a[tag=foGamePlayer,advancements={fueoni:item/ender_eye=true}] run scoreboard players reset @s foUseEnderPearl
 #item: kill oni
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run clear @s
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run tellraw @s [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼退治されてしまった！","color":"red","bold":true}]
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect give @s slowness 5 2 true
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect give @s blindness 5 0 true
-execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] at @s run teleport @s ~ ~ ~ ~180 ~
-execute as @a[tag=foGamePlayer,nbt={ActiveEffects:[{Id:27b,Amplifier:0b}]}] run effect clear @s unluck
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] run clear @s
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] run tellraw @s [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼退治されてしまった！","color":"red","bold":true}]
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] run effect give @s slowness 6 2 true
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] run effect give @s blindness 7 0 false
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] run effect give @s nausea 9 0 false
+execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] at @s run teleport @s ~ ~ ~ ~180 ~
+execute as @a[tag=foGamePlayer,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] run effect clear @s unluck
 #kill arrows in ground
 execute as @a[tag=foGamePlayer] at @s run kill @e[type=arrow,nbt={inGround:true},distance=..30]
 #clear bow after use

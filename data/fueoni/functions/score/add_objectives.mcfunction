@@ -17,4 +17,3 @@ scoreboard objectives add foSettingsTrigger trigger
 scoreboard objectives add foAliveTime minecraft.custom:minecraft.time_since_death
 scoreboard objectives add foDeathCount minecraft.custom:minecraft.deaths
 scoreboard objectives add foQuitGame minecraft.custom:minecraft.leave_game
-scoreboard objectives add foUseEnderPearl minecraft.used:minecraft.ender_pearl

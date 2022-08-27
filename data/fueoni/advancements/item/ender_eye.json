@@ -1,0 +1,16 @@
+{
+    "parent": "fueoni:root",
+    "criteria": {
+        "use_ender_eye": {
+            "trigger": "minecraft:using_item",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "minecraft:ender_eye"
+                    ],
+                    "nbt": "{display:{Name:'{\"translate\":\"透視の目\",\"color\":\"aqua\",\"bold\":true,\"italic\":false}'}}"
+                }
+            }
+        }
+    }
+}
