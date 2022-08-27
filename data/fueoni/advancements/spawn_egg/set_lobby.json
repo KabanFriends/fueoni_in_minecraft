@@ -8,7 +8,7 @@
                     "items": [
                         "minecraft:llama_spawn_egg"
                     ],
-                    "nbt": "{EntityTag:{id:\"minecraft:marker\",Tags:[\"foSetLobby\"]}}"
+                    "nbt": "{EntityTag:{id:\"minecraft:armor_stand\",Tags:[\"foSetLobby\"]}}"
                 }
             }
         }

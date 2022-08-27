@@ -8,7 +8,7 @@
                     "items": [
                         "minecraft:squid_spawn_egg"
                     ],
-                    "nbt": "{EntityTag:{id:\"minecraft:marker\",Tags:[\"foGameSettings\"]}}"
+                    "nbt": "{EntityTag:{id:\"minecraft:armor_stand\",Tags:[\"foGameSettings\"]}}"
                 }
             }
         }

@@ -8,7 +8,7 @@
                     "items": [
                         "minecraft:zombie_horse_spawn_egg"
                     ],
-                    "nbt": "{EntityTag:{id:\"minecraft:marker\",Tags:[\"foStart\"]}}"
+                    "nbt": "{EntityTag:{id:\"minecraft:armor_stand\",Tags:[\"foStart\"]}}"
                 }
             }
         },
@@ -19,7 +19,7 @@
                     "items": [
                         "minecraft:parrot_spawn_egg"
                     ],
-                    "nbt": "{EntityTag:{id:\"minecraft:marker\",Tags:[\"foStartAllPlayers\"]}}"
+                    "nbt": "{EntityTag:{id:\"minecraft:armor_stand\",Tags:[\"foStartAllPlayers\"]}}"
                 }
             }
         }
