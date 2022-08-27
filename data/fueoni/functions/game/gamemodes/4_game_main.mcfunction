@@ -114,7 +114,8 @@ execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0
 execute as @a[tag=foGamePlayer,team=foOni,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] at @s run teleport @s ~ ~ ~ ~180 ~
 execute as @a[tag=foGamePlayer,nbt={ActiveEffects:[{Id:27,Amplifier:0b}]}] run effect clear @s minecraft:unluck
 #kill arrows in ground
-execute as @a[tag=foGamePlayer] at @s run kill @e[type=arrow,nbt={inGround:true},distance=..30]
+execute as @a[tag=foGamePlayer] at @s run tag @e[type=arrow,tag=!foArrowEntity,distance=..30] add foArrowEntity
+execute as @a[tag=foGamePlayer] at @s run kill @e[type=arrow,tag=foArrowEntity,nbt={inGround:true}]
 #clear bow after use
 clear @a[tag=foGamePlayer,nbt=!{Inventory:[{id:"minecraft:tipped_arrow"}]}] minecraft:bow
 #runner wins
