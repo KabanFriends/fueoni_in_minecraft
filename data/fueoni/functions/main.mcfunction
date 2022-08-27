@@ -2,7 +2,7 @@
 #Made by KabanFriends
 
 #GIVE ADMIN ITEM
-execute as @e[nbt={Inventory:[{id:"minecraft:command_block",tag:{display:{Name:'{"text":"fueoni"}'}}}]}] run function fueoni:player/admin
+execute as @a[nbt={Inventory:[{id:"minecraft:command_block",tag:{display:{Name:'{"text":"fueoni"}'}}}]}] run function fueoni:player/admin
 
 #ADMIN ENTITY: SET LOBBY
 execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] run execute as @a[advancements={fueoni:spawn_egg/set_lobby=true}] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
