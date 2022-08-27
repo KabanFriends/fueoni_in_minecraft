@@ -5,6 +5,9 @@
 execute as @e[nbt={Inventory:[{id:"minecraft:command_block",tag:{display:{Name:'{"text":"fueoni"}'}}}]}] run function fueoni:player/admin
 
 #ADMIN ENTITY: SET LOBBY
+execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] run execute as @a[advancements={fueoni:spawn_egg/set_lobby=true}] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
+execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] run tellraw @a[advancements={fueoni:spawn_egg/set_lobby=true}] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"ロビー地点は初期ワールド以外では設定できません！","color":"red"}]
+execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] run kill @e[tag=foSetLobby]
 execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_xpos foGameOption run data get entity @s Pos[0] 100
 execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_ypos foGameOption run data get entity @s Pos[1] 100
 execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_zpos foGameOption run data get entity @s Pos[2] 100

@@ -20,3 +20,6 @@ execute if score item_invis foGameOption matches 1 if score item_invis_added foG
 execute if score item_arrow foGameOption matches 1 if score item_arrow_added foGameData matches 0 run function fueoni:game/add_item/arrow
 
 execute as @e[tag=foStartLocation] at @s run function fueoni:world/get_world_height
+
+scoreboard players operation void_y foGameData = min_y foGameData
+scoreboard players remove void_y foGameData 16

@@ -22,7 +22,7 @@ execute if score game_timeleft foGameData matches 1..3 if score game_ticksec foG
 execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] times 0 40 0
 execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] title {"translate":"解放待機中","color":"yellow","bold":true}
 execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] subtitle [{"translate":"あと%1$s…","with":[{"translate":"%1$s秒","color":"aqua","bold":true,"with":[{"score":{"name":"game_timeleft","objective":"foGameData"},"color":"aqua","bold":true}]}]}]
-execute if score game_timeleft foGameData matches 1.. at @e[tag=foStartLocation] run teleport @a[tag=foGamePlayer,team=foOni] ~ -80 ~ ~ 90.0
+execute if score game_timeleft foGameData matches 1.. at @e[tag=foVoidLocation] run teleport @a[tag=foGamePlayer,team=foOni] ~ ~ ~ ~ 90.0
 #count 0
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run effect clear @a[tag=foGamePlayer,team=foOni] blindness
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run effect clear @a[tag=foGamePlayer,team=foOni] levitation
