@@ -1,0 +1,16 @@
+{
+    "parent": "fueoni:root",
+    "criteria": {
+        "use_spawn_egg": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "minecraft:squid_spawn_egg"
+                    ],
+                    "nbt": "{EntityTag:{id:\"minecraft:marker\",Tags:[\"foGameSettings\"]}}"
+                }
+            }
+        }
+    }
+}

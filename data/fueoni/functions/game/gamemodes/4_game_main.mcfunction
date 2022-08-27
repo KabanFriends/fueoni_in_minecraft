@@ -9,8 +9,10 @@ execute if score game_timer foGameData matches 1 run scoreboard players set num_
 execute if score game_timer foGameData matches 1 run scoreboard players reset @a[tag=foGamePlayer] foDeathCount
 execute if score game_timer foGameData matches 1 run scoreboard players set @a[tag=foGamePlayer] foAliveTime 3
 execute if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foIngameSidebar
-execute if score game_timer foGameData matches 1 run scoreboard players operation game_timeleft foGameData = game_minutes foGameOption
-execute if score game_timer foGameData matches 1 run scoreboard players operation game_timeleft foGameData *= num_60 foGameData
+execute if score game_timer foGameData matches 1 run scoreboard players operation game_timeleft foGameData = game_seconds foGameOption
+execute if score game_timer foGameData matches 1 run item replace entity @a[tag=foGamePlayer,team=foOni] armor.chest with minecraft:leather_chestplate{display:{Name:'{"translate":"鬼の服","color":"red","bold":true,"italic":false}',Lore:['{"translate":"トマトジュースで染まった","color":"gray","italic":false}','{"translate":"きれいな赤色！","color":"gray","italic":false}'],color:16711680},HideFlags: 63,Unbreakable: 1b,Enchantments:[{id:"minecraft:protection",lvl:127s},{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
+execute if score game_timer foGameData matches 1 run effect clear @a[tag=foGamePlayer,team=foOni] invisibility
+execute if score game_timer foGameData matches 1 run effect clear @a[tag=foGamePlayer,team=foRunner] strength
 scoreboard players operation game_ticksec foGameData = game_timer foGameData
 scoreboard players operation game_ticksec foGameData %= num_20 foGameData
 execute if score game_ticksec foGameData matches 0 run scoreboard players remove game_timeleft foGameData 1
@@ -23,10 +25,8 @@ scoreboard players operation bar_sec foGameData = game_timeleft foGameData
 scoreboard players operation bar_min foGameData = game_timeleft foGameData
 scoreboard players operation bar_sec foGameData %= num_60 foGameData
 scoreboard players operation bar_min foGameData /= num_60 foGameData
-execute if score bar_min foGameData matches ..9 if score bar_sec foGameData matches ..9 run bossbar set fo_ingame name [{"translate":"残り時間: %1$s","color":"red","with":[[{"text":"0","color":"gold","bold":true},{"score":{"name":"bar_min","objective":"foGameData"},"color":"gold","bold":true},{"text":":0","color":"gold","bold":true},{"score":{"name":"bar_sec","objective":"foGameData"},"color":"gold","bold":true}]]}]
-execute if score bar_min foGameData matches 10.. if score bar_sec foGameData matches ..9 run bossbar set fo_ingame name [{"translate":"残り時間: %1$s","color":"red","with":[[{"score":{"name":"bar_min","objective":"foGameData"},"color":"gold","bold":true},{"text":":0","color":"gold","bold":true},{"score":{"name":"bar_sec","objective":"foGameData"},"color":"gold","bold":true}]]}]
-execute if score bar_min foGameData matches ..9 if score bar_sec foGameData matches 10.. run bossbar set fo_ingame name [{"translate":"残り時間: %1$s","color":"red","with":[[{"text":"0","color":"gold","bold":true},{"score":{"name":"bar_min","objective":"foGameData"},"color":"gold","bold":true},{"text":":","color":"gold","bold":true},{"score":{"name":"bar_sec","objective":"foGameData"},"color":"gold","bold":true}]]}]
-execute if score bar_min foGameData matches 10.. if score bar_sec foGameData matches 10.. run bossbar set fo_ingame name [{"translate":"残り時間: %1$s","color":"red","with":[[{"score":{"name":"bar_min","objective":"foGameData"},"color":"gold","bold":true},{"text":":","color":"gold","bold":true},{"score":{"name":"bar_sec","objective":"foGameData"},"color":"gold","bold":true}]]}]
+execute if score bar_sec foGameData matches ..9 run bossbar set fo_ingame name [{"translate":"残り時間: %1$s","color":"red","with":[[{"score":{"name":"bar_min","objective":"foGameData"},"color":"gold","bold":true},{"text":":0","color":"gold","bold":true},{"score":{"name":"bar_sec","objective":"foGameData"},"color":"gold","bold":true}]]}]
+execute if score bar_sec foGameData matches 10.. run bossbar set fo_ingame name [{"translate":"残り時間: %1$s","color":"red","with":[[{"score":{"name":"bar_min","objective":"foGameData"},"color":"gold","bold":true},{"text":":","color":"gold","bold":true},{"score":{"name":"bar_sec","objective":"foGameData"},"color":"gold","bold":true}]]}]
 bossbar set fo_ingame players @a[tag=foGamePlayer]
 #death
 team join foOni @a[tag=foGamePlayer,team=foRunner,scores={foDeathCount=1..}]
@@ -48,15 +48,18 @@ tag @e[tag=foNeedItem,scores={foEntityTick=2}] remove foNeedItem
 #increase timer
 scoreboard players add @a[tag=foGamePlayer,team=foRunner] foItemSpawnTimer 1
 #create rng numbers
-execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foSpawnTimerEnd run loot spawn ~ -500 ~ loot fueoni:rng_spawntimer
-execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 store result score @s foItemSpawnType run loot spawn ~ -500 ~ loot fueoni:rng_itemtype
+execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer matches 1 run function fueoni:game/generate_random
 #detect timer and spawn
-execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 0 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foEye","foGameEntity","foItemEntity"],DisabledSlots:4144959}
-execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 1 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foSpeed","foGameEntity","foItemEntity"],DisabledSlots:4144959}
-execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 2 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foInvisible","foGameEntity","foItemEntity"],DisabledSlots:4144959}
-execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 3 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foKillOni","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnId matches 1 run scoreboard players operation @s foItemSpawnType = item_1 foGameData
+execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnId matches 2 run scoreboard players operation @s foItemSpawnType = item_2 foGameData
+execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnId matches 3 run scoreboard players operation @s foItemSpawnType = item_3 foGameData
+execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnId matches 4 run scoreboard players operation @s foItemSpawnType = item_4 foGameData
+execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 1 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foEye","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 2 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foSpeed","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 3 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foInvisible","foGameEntity","foItemEntity"],DisabledSlots:4144959}
+execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd if score @s foItemSpawnType matches 4 run summon armor_stand ~ ~ ~ {CustomNameVisible:1b,NoGravity:1b,Invulnerable:1b,Marker:0b,Invisible:1b,Tags:["foNeedItem","foNeedTeleport","foKillOni","foGameEntity","foItemEntity"],DisabledSlots:4144959}
 #spread spawned item
-execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd run spreadplayers ~ ~ 30 30 false @e[tag=foItemEntity,limit=1,sort=nearest]
+execute as @a[tag=foGamePlayer,team=foRunner] at @s positioned ~ -80 ~ if score @s foItemSpawnTimer >= @s foSpawnTimerEnd run spreadplayers ~ ~ 0 64 false @e[tag=foItemEntity,limit=1,sort=nearest]
 #reset timer
 execute as @a[tag=foGamePlayer,team=foRunner] if score @s foItemSpawnTimer >= @s foSpawnTimerEnd run scoreboard players set @s foItemSpawnTimer 0
 #teleport item entity

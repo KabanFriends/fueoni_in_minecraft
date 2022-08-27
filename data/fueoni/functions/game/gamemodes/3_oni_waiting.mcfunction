@@ -6,12 +6,12 @@ effect give @a[tag=foGamePlayer] resistance 1000000 127 true
 effect give @a[tag=foGamePlayer] instant_health 1000000 127 true
 effect give @a[tag=foGamePlayer] saturation 1000000 127 true
 execute if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
-execute if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 15
+execute if score game_timer foGameData matches 1 run scoreboard players operation game_timeleft foGameData = oni_release_seconds foGameOption 
 execute if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foIngameSidebar
 execute if score game_timer foGameData matches 1 run scoreboard players set @a[tag=foGamePlayer] foAliveTime 3
 execute if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] blindness 1000000 0 true
 execute if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] levitation 1000000 255 true
-execute if score game_timer foGameData matches 1 run item replace entity @a[tag=foGamePlayer,team=foOni] armor.chest with minecraft:leather_chestplate{display:{Name:'{"translate":"鬼の服","color":"red","bold":true,"italic":false}',Lore:['{"translate":"トマトジュースで染まった","color":"gray","italic":false}','{"translate":"きれいな赤色！","color":"gray","italic":false}'],color:16711680},HideFlags: 63,Unbreakable: 1b,Enchantments:[{id:"minecraft:protection",lvl:127s},{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
+execute if score game_timer foGameData matches 1 run effect give @a[tag=foGamePlayer,team=foOni] invisibility 1000000 0 true
 scoreboard players operation game_ticksec foGameData = game_timer foGameData
 scoreboard players operation game_ticksec foGameData %= num_20 foGameData
 execute if score game_ticksec foGameData matches 0 run scoreboard players remove game_timeleft foGameData 1

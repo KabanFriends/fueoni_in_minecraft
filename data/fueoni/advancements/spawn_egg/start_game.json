@@ -1,0 +1,30 @@
+{
+    "parent": "fueoni:root",
+    "criteria": {
+        "use_spawn_egg": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "minecraft:zombie_horse_spawn_egg"
+                    ],
+                    "nbt": "{EntityTag:{id:\"minecraft:marker\",Tags:[\"foStart\"]}}"
+                }
+            }
+        },
+        "use_spawn_egg_all": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "item": {
+                    "items": [
+                        "minecraft:parrot_spawn_egg"
+                    ],
+                    "nbt": "{EntityTag:{id:\"minecraft:marker\",Tags:[\"foStartAllPlayers\"]}}"
+                }
+            }
+        }
+    },
+    "requirements": [
+        ["use_spawn_egg", "use_spawn_egg_all"]
+    ]
+}

@@ -32,28 +32,58 @@ execute as @e[tag=foRemoveAllPlayers] run execute as @a[tag=foGamePlayer] at @s 
 execute as @e[tag=foRemoveAllPlayers] run execute as @a[tag=foGamePlayer,team=foGameJoinQueue] run function fueoni:player/quit
 
 #ADMIN ENTITY: START
-execute as @e[tag=foStart] at @s run function fueoni:start
+execute as @e[tag=foStart] at @s run function fueoni:game/start
 
 #ADMIN ENTITY: START ALL PLAYERS
 execute as @e[tag=foStartAllPlayers] run team join foGameJoinQueue @a[team=!foGameJoinQueue]
 execute as @e[tag=foStartAllPlayers] at @s run tag @a[tag=!foGamePlayer] add foGamePlayer
-execute as @e[tag=foStartAllPlayers] at @s run function fueoni:start
+execute as @e[tag=foStartAllPlayers] at @s run function fueoni:game/start
 
 #ADMIN ENTITY: END GAME
-execute as @e[tag=foEndGame] run function fueoni:reset
+execute as @e[tag=foEndGame] run function fueoni:game/reset
 execute as @e[tag=foEndGame] run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
 execute as @e[tag=foEndGame] run kill @e[tag=foGameEntity]
 execute as @e[tag=foEndGame] run team join foGameJoinQueue @a[tag=foGamePlayer]
 
-#ADMIN ENTITY: CHANGE TIME
-execute as @e[tag=foChangeTime] at @s run execute as @a[distance=..5,scores={foSneakTime=1..}] run tag @e[tag=foChangeTime] add foHasSneaker
-execute as @e[tag=foChangeTime,tag=!foHasSneaker] at @s run execute as @a[distance=..5] at @s run playsound minecraft:block.wooden_button.click_on voice @s ~ ~ ~ 1.0 1.8
-execute as @e[tag=foChangeTime,tag=!foHasSneaker] run scoreboard players add game_minutes foGameOption 1 
-execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 1 run execute as @a[distance=..5] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
-execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 1 run tellraw @a[distance=..5] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"ゲームの長さは%1$sである必要があります。","color":"red","with":[{"translate":"1分以上","color":"gold"}]}]
-execute as @e[tag=foChangeTime,tag=foHasSneaker] at @s if score game_minutes foGameOption matches 2.. run execute as @a[distance=..5] at @s run playsound minecraft:block.wooden_button.click_on voice @s ~ ~ ~ 1.0 1.0
-execute as @e[tag=foChangeTime,tag=foHasSneaker] if score game_minutes foGameOption matches 2.. run scoreboard players remove game_minutes foGameOption 1
-execute as @e[tag=foChangeTime] at @s run title @a[distance=..5] actionbar [{"text":""},{"text":">","color":"gray","bold":true},{"text":" "},{"translate":"ゲームの長さ: %1$s","color":"green","with":[{"translate":"%1$s分間","color":"aqua","bold":true,"with":[{"score":{"name":"game_minutes","objective":"foGameOption"},"color":"aqua","bold":true}]}]}]
+#ADMIN ENTITY: GAME SETTINGS
+execute as @a[advancements={fueoni:spawn_egg/game_settings=true}] at @s run playsound minecraft:block.wooden_button.click_on voice @s ~ ~ ~ 1.0 1.8
+execute as @a[advancements={fueoni:spawn_egg/game_settings=true}] at @s run function fueoni:player/game_settings
+
+#item settings
+execute as @a[scores={foSettingsTrigger=1}] run scoreboard players set item_eye foGameOption 1
+execute as @a[scores={foSettingsTrigger=2}] run scoreboard players set item_eye foGameOption 0
+execute as @a[scores={foSettingsTrigger=3}] run scoreboard players set item_speed foGameOption 1
+execute as @a[scores={foSettingsTrigger=4}] run scoreboard players set item_speed foGameOption 0
+execute as @a[scores={foSettingsTrigger=5}] run scoreboard players set item_invis foGameOption 1
+execute as @a[scores={foSettingsTrigger=6}] run scoreboard players set item_invis foGameOption 0
+execute as @a[scores={foSettingsTrigger=7}] run scoreboard players set item_arrow foGameOption 1
+execute as @a[scores={foSettingsTrigger=8}] run scoreboard players set item_arrow foGameOption 0
+
+#oni count settings
+execute as @a[scores={foSettingsTrigger=9}] if score oni_count foGameOption matches 2.. run scoreboard players remove oni_count foGameOption 1
+execute as @a[scores={foSettingsTrigger=10}] run scoreboard players add oni_count foGameOption 1
+
+#game time settings
+execute as @a[scores={foSettingsTrigger=11}] if score game_seconds foGameOption matches 70.. run scoreboard players remove game_seconds foGameOption 60
+execute as @a[scores={foSettingsTrigger=12}] if score game_seconds foGameOption matches 11.. run scoreboard players remove game_seconds foGameOption 10
+execute as @a[scores={foSettingsTrigger=13}] run scoreboard players add game_seconds foGameOption 10
+execute as @a[scores={foSettingsTrigger=14}] run scoreboard players add game_seconds foGameOption 60
+
+#release time settings
+execute as @a[scores={foSettingsTrigger=15}] if score oni_release_seconds foGameOption matches 2.. run scoreboard players remove oni_release_seconds foGameOption 1
+execute as @a[scores={foSettingsTrigger=16}] run scoreboard players add oni_release_seconds foGameOption 1
+
+#teleport to lobby settings
+execute as @a[scores={foSettingsTrigger=17}] run scoreboard players set tp_lobby foGameOption 1
+execute as @a[scores={foSettingsTrigger=18}] run scoreboard players set tp_lobby foGameOption 0
+
+#resend settings
+tellraw @a[scores={foSettingsTrigger=1..18}] {"text":"\n\n\n\n"}
+execute as @a[scores={foSettingsTrigger=1..18}] at @s run playsound minecraft:block.note_block.hat voice @s ~ ~ ~ 1.0 1.2
+execute as @a[scores={foSettingsTrigger=1..18}] run function fueoni:player/game_settings
+
+execute as @a[scores={foSettingsTime=1..}] run scoreboard players remove @s foSettingsTime 1
+execute as @a[scores={foSettingsTime=..0}] run trigger foSettingsTrigger set 0
 
 #DELETE ADMIN ENTITIES
 kill @e[tag=foAdminEntity]
@@ -94,19 +124,18 @@ scoreboard players operation §r foListSidebar = all_players foGameData
 scoreboard players set @a[tag=foGamePlayer] foListSidebar 0
 scoreboard players reset @a[tag=!foGamePlayer] foListSidebar
 
-#SNEAK DETECTION
-scoreboard players set @a[scores={foSneakTime=1..}] foSneakTime 1
-scoreboard players reset @a[scores={foSneakTime=1..}] foSneakTime
-
 #GAMEMODES
-execute if score game_mode foGameData matches 1 run function fueoni:gamemodes/1_validate
-execute if score game_mode foGameData matches 2 run function fueoni:gamemodes/2_pre_oni_select
-execute if score game_mode foGameData matches 3 run function fueoni:gamemodes/3_oni_waiting
-execute if score game_mode foGameData matches 4 run function fueoni:gamemodes/4_game_main
-execute if score game_mode foGameData matches 5 run function fueoni:gamemodes/5_ending
+execute if score game_mode foGameData matches 1 run function fueoni:game/gamemodes/1_validate
+execute if score game_mode foGameData matches 2 run function fueoni:game/gamemodes/2_pre_oni_select
+execute if score game_mode foGameData matches 3 run function fueoni:game/gamemodes/3_oni_waiting
+execute if score game_mode foGameData matches 4 run function fueoni:game/gamemodes/4_game_main
+execute if score game_mode foGameData matches 5 run function fueoni:game/gamemodes/5_ending
 
 #GLOBAL INGAME SIDEBAR
 execute if score game_mode foGameData matches 3..4 run team join foOniCount §r§r
 execute if score game_mode foGameData matches 3..4 run scoreboard players operation §r§r foIngameSidebar = all_onis foGameData
 execute if score game_mode foGameData matches 3..4 run team join foRunnerCount §r§r§r
 execute if score game_mode foGameData matches 3..4 run scoreboard players operation §r§r§r foIngameSidebar = all_runners foGameData
+
+#REVOKE ADVANCEMENTS
+advancement revoke @a through fueoni:root

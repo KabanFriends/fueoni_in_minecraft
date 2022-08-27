@@ -4,6 +4,7 @@
 gamerule maxCommandChainLength 65536
 gamerule commandBlockOutput false
 gamerule logAdminCommands false
+function fueoni:random/init
 function fueoni:score/remove_objectives
 function fueoni:team/remove_teams
 function fueoni:bossbar/remove_bossbar
@@ -12,7 +13,14 @@ function fueoni:team/add_teams
 function fueoni:bossbar/add_bossbar
 
 #DEFAULT SETTINGS
-scoreboard players set game_minutes foGameOption 3
+scoreboard players set item_eye foGameOption 1
+scoreboard players set item_speed foGameOption 1
+scoreboard players set item_invis foGameOption 1
+scoreboard players set item_arrow foGameOption 1
+scoreboard players set tp_lobby foGameOption 1
+scoreboard players set oni_count foGameOption 1
+scoreboard players set oni_release_seconds foGameOption 15
+scoreboard players set game_seconds foGameOption 180
 scoreboard players set sessionID foGameOption 0
 
-scoreboard players set init_done foGameOption 1
+scoreboard players set init_ver foGameOption 1
