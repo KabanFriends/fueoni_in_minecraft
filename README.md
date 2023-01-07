@@ -11,7 +11,7 @@
 データパックとMinecraftのバージョン対応表:
 | Minecraft | 増え鬼データパック |
 ----|----
-| 1.19～1.19.2 | [ver2.0.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/2.0.0) |
+| 1.19～1.19.3 | [ver2.0.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/2.0.0) |
 | 1.18～1.18.2 | [ver1.2.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.2.0) |
 | 1.17～1.17.1 | [ver1.1.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.1.0) |
 | 1.14～1.16.5 | [ver1.0.1](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.0.1) |
