@@ -2,7 +2,7 @@
 #Made by KabanFriends
 
 playsound minecraft:entity.player.levelup voice @s[type=player,tag=!foGamePlayer] ~ ~ ~ 1.0 2.0
-tellraw @s[type=player,tag=!foGamePlayer] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"あなたは次の増え鬼ゲームの参加者になりました。","color":"green"}]
+tellraw @s[type=player,tag=!foGamePlayer] [{"text":""},{"translate":"fueoni.message.prefix","fallback":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray","bold":false},{"translate":"fueoni.message.joined","fallback":"あなたは次の増え鬼ゲームの参加者になりました。","color":"green"}]
 team join foGameJoinQueue @s[type=player,tag=!foGamePlayer]
 
 #before oni selection -> teleport to game start location

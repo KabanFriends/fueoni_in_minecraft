@@ -1,8 +1,8 @@
 #Function file for "FUEONI in Minecraft"
 #Made by KabanFriends
 
-scoreboard objectives add foIngameSidebar dummy [{"translate":"増え鬼 %1$s","color":"yellow","bold":true,"with":[{"translate":"[ゲーム中]","color":"gold","bold":false}]}]
-scoreboard objectives add foListSidebar dummy [{"translate":"増え鬼 %1$s","color":"yellow","bold":true,"with":[{"translate":"[参加者]","color":"gold","bold":false}]}]
+scoreboard objectives add foIngameSidebar dummy [{"translate":"fueoni.scoreboard.title","fallback":"増え鬼","color":"yellow","bold":true,"with":[{"translate":"fueoni.scoreboard.title.ingame","fallback":"[ゲーム中]","color":"gold","bold":false}]}]
+scoreboard objectives add foListSidebar dummy [{"translate":"fueoni.scoreboard.title","fallback":"増え鬼","color":"yellow","bold":true,"with":[{"translate":"fueoni.scoreboard.title.players","fallback":"[参加者]","color":"gold","bold":false}]}]
 scoreboard objectives add foGameOption dummy
 scoreboard objectives add foGameData dummy
 scoreboard objectives add foRandom dummy

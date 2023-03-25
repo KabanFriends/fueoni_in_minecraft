@@ -6,7 +6,7 @@ execute as @a[nbt={Inventory:[{id:"minecraft:command_block",tag:{display:{Name:'
 
 #ADMIN ENTITY: SET LOBBY
 execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] as @a[advancements={fueoni:spawn_egg/set_lobby=true}] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
-execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] run tellraw @a[advancements={fueoni:spawn_egg/set_lobby=true}] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"ロビー地点は初期ワールド以外では設定できません！","color":"red"}]
+execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] run tellraw @a[advancements={fueoni:spawn_egg/set_lobby=true}] [{"text":""},{"translate":"fueoni.message.prefix","fallback":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray","bold":false},{"translate":"fueoni.message.cannot_set_lobby","fallback":"ロビー地点は初期ワールド以外では設定できません！","color":"red"}]
 execute if entity @e[tag=foSetLobby] unless entity @a[advancements={fueoni:spawn_egg/set_lobby=true},x=0] run kill @e[tag=foSetLobby]
 execute if entity @e[tag=foSetLobby] as @a[advancements={fueoni:spawn_egg/set_lobby=true}] at @s run playsound minecraft:entity.experience_orb.pickup voice @s ~ ~ ~ 0.7 2.0
 execute if entity @e[tag=foSetLobby] as @e[tag=foSetLobby] store result score lobby_xpos foGameOption run data get entity @s Pos[0] 100

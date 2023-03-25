@@ -18,10 +18,10 @@ execute if score game_ticksec foGameData matches 0 run scoreboard players remove
 team join foReleaseTime §r§r§r§r
 scoreboard players operation §r§r§r§r foIngameSidebar = game_timeleft foGameData
 execute if score game_timeleft foGameData matches 1..3 if score game_ticksec foGameData matches 0 run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:ui.button.click voice @s ~ ~ ~ 1.0 1.0
-execute if score game_timeleft foGameData matches 1..3 if score game_ticksec foGameData matches 0 run tellraw @a[tag=foGamePlayer] [{"text":""},{"translate":"増え鬼%1$s","color":"yellow","bold":true,"with":[{"text":" » ","color":"gray","bold":false}]},{"translate":"鬼が%1$sに解放されます！","color":"gold","with":[{"translate":"%1$s秒後","color":"red","bold":true,"with":[{"score":{"name":"game_timeleft","objective":"foGameData"},"color":"red","bold":true}]}]}]
+execute if score game_timeleft foGameData matches 1..3 if score game_ticksec foGameData matches 0 run tellraw @a[tag=foGamePlayer] [{"text":""},{"translate":"fueoni.message.prefix","fallback":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray","bold":false},{"translate":"fueoni.message.oni_waiting.release_countdown","fallback":"鬼が%1$sに解放されます！","color":"gold","with":[{"translate":"fueoni.unit.seconds_later","fallback":"%1$s秒後","color":"red","bold":true,"with":[{"score":{"name":"game_timeleft","objective":"foGameData"},"color":"red","bold":true}]}]}]
 execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] times 0 40 0
-execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] title {"translate":"解放待機中","color":"yellow","bold":true}
-execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] subtitle [{"translate":"あと%1$s…","with":[{"translate":"%1$s秒","color":"aqua","bold":true,"with":[{"score":{"name":"game_timeleft","objective":"foGameData"},"color":"aqua","bold":true}]}]}]
+execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] title {"translate":"fueoni.title.oni_waiting.waiting","fallback":"解放待機中","color":"yellow","bold":true}
+execute if score game_timeleft foGameData matches 1.. run title @a[tag=foGamePlayer,team=foOni] subtitle [{"translate":"fueoni.title.oni_waiting.remaining","fallback":"あと%1$s…","with":[{"translate":"fueoni.unit.seconds_later","fallback":"%1$s秒","color":"aqua","bold":true,"with":[{"score":{"name":"game_timeleft","objective":"foGameData"},"color":"aqua","bold":true}]}]}]
 execute if score game_timeleft foGameData matches 1.. at @e[tag=foVoidLocation] run teleport @a[tag=foGamePlayer,team=foOni] ~ ~ ~ ~ 90.0
 #count 0
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run effect clear @a[tag=foGamePlayer,team=foOni] blindness
@@ -30,9 +30,9 @@ execute if score game_timeleft foGameData matches 0 if score game_ticksec foGame
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run effect clear @a[tag=foGamePlayer] instant_health
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run tp @a[tag=foGamePlayer,team=foOni] @e[tag=foStartLocation,limit=1]
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run title @a[tag=foGamePlayer] times 20 60 20
-execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run title @a[tag=foGamePlayer] title {"translate":"ゲームスタート","color":"gold","bold":true}
-execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run title @a[tag=foGamePlayer,team=foRunner] subtitle {"translate":"鬼につかまるな！"}
-execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run title @a[tag=foGamePlayer,team=foOni] subtitle {"translate":"逃走者をつかまえろ！"}
+execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run title @a[tag=foGamePlayer] title {"translate":"fueoni.title.game.game_start","fallback":"ゲームスタート","color":"gold","bold":true}
+execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run title @a[tag=foGamePlayer,team=foRunner] subtitle {"translate":"fueoni.title.game.runner_tip","fallback":"鬼につかまるな！"}
+execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run title @a[tag=foGamePlayer,team=foOni] subtitle {"translate":"fueoni.title.game.oni_tip","fallback":"逃走者をつかまえろ！"}
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:entity.ender_dragon.growl voice @s ~ ~ ~ 50.0 1.0
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run scoreboard players reset §r foIngameSidebar
 execute if score game_timeleft foGameData matches 0 if score game_ticksec foGameData matches 0 run scoreboard players set game_timer foGameData 0
