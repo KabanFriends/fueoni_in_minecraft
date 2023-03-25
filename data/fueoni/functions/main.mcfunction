@@ -81,10 +81,15 @@ execute as @a[scores={foSettingsTrigger=16}] run scoreboard players add oni_rele
 execute as @a[scores={foSettingsTrigger=17}] run scoreboard players set tp_lobby foGameOption 1
 execute as @a[scores={foSettingsTrigger=18}] run scoreboard players set tp_lobby foGameOption 0
 
+#item spawn frequency settings
+execute as @a[scores={foSettingsTrigger=19}] run scoreboard players set item_frequency foGameOption 0
+execute as @a[scores={foSettingsTrigger=20}] run scoreboard players set item_frequency foGameOption 1
+execute as @a[scores={foSettingsTrigger=21}] run scoreboard players set item_frequency foGameOption 2
+
 #resend settings
-tellraw @a[scores={foSettingsTrigger=1..18}] {"text":"\n\n\n\n"}
-execute as @a[scores={foSettingsTrigger=1..18}] at @s run playsound minecraft:block.note_block.hat voice @s ~ ~ ~ 1.0 1.2
-execute as @a[scores={foSettingsTrigger=1..18}] run function fueoni:player/game_settings
+tellraw @a[scores={foSettingsTrigger=1..21}] {"text":"\n\n\n\n"}
+execute as @a[scores={foSettingsTrigger=1..21}] at @s run playsound minecraft:block.note_block.hat voice @s ~ ~ ~ 1.0 1.2
+execute as @a[scores={foSettingsTrigger=1..21}] run function fueoni:player/game_settings
 
 execute as @a[scores={foSettingsTime=1..}] run scoreboard players remove @s foSettingsTime 1
 execute as @a[scores={foSettingsTime=..0}] run trigger foSettingsTrigger set 0
