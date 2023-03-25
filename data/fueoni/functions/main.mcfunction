@@ -50,7 +50,7 @@ execute as @e[tag=foEndGame] run kill @e[tag=foGameEntity]
 execute as @e[tag=foEndGame] run team join foGameJoinQueue @a[tag=foGamePlayer]
 
 #ADMIN ENTITY: GAME SETTINGS
-execute as @a[advancements={fueoni:spawn_egg/game_settings=true}] at @s run playsound minecraft:block.wooden_button.click_on voice @s ~ ~ ~ 1.0 1.8
+execute as @a[advancements={fueoni:spawn_egg/game_settings=true}] at @s run playsound minecraft:block.wooden_button.click_off voice @s ~ ~ ~ 2.5 2.0
 execute as @a[advancements={fueoni:spawn_egg/game_settings=true}] at @s run function fueoni:player/game_settings
 
 #item settings
