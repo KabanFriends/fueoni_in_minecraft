@@ -31,7 +31,7 @@ team modify foReleaseTime prefix [{"translate":"fueoni.scoreboard.line.oni_relea
 team add foRemainingTime
 team modify foRemainingTime prefix [{"translate":"fueoni.scoreboard.line.time_remaining","fallback":"残り時間(秒)"}]
 team add foOniCount
-team modify foOniCount prefix [{"translate":"fueoni.scoreboard.line.count","fallback":"%1$sの数","with":[{"translate":"fueoni.scoreboard.line.oni","fallback":"鬼","color":"red"}]}]
+team modify foOniCount prefix [{"translate":"fueoni.scoreboard.line.count","fallback":"%1$sの数","with":[{"translate":"fueoni.scoreboard.line.count.oni","fallback":"鬼","color":"red"}]}]
 team add foRunnerCount
-team modify foRunnerCount prefix [{"translate":"fueoni.scoreboard.line.count","fallback":"%1$sの数","with":[{"translate":"fueoni.scoreboard.line.runner","fallback":"逃走者","color":"green"}]}]
+team modify foRunnerCount prefix [{"translate":"fueoni.scoreboard.line.count","fallback":"%1$sの数","with":[{"translate":"fueoni.scoreboard.line.count.runner","fallback":"逃走者","color":"green"}]}]
 

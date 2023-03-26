@@ -13,6 +13,8 @@ scoreboard objectives add foItemSpawnId dummy
 scoreboard objectives add foItemSpawnType dummy
 scoreboard objectives add foSpawnTimerEnd dummy
 scoreboard objectives add foInvisibleTimer dummy
+scoreboard objectives add foPlayerTickTemp1 dummy
+scoreboard objectives add foPlayerTickTemp2 dummy
 scoreboard objectives add foSettingsTime dummy
 scoreboard objectives add foSettingsTrigger trigger
 scoreboard objectives add foAliveTime minecraft.custom:minecraft.time_since_death

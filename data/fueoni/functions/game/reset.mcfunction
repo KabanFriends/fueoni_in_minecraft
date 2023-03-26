@@ -10,6 +10,3 @@ function fueoni:bossbar/add_bossbar
 kill @e[tag=foGameEntity]
 clear @a[tag=foGamePlayer]
 effect clear @a[tag=foGamePlayer]
-team join foGameJoinQueue @a[tag=foGamePlayer]
-gamemode adventure @a[tag=foGamePlayer,gamemode=spectator]
-execute if score tp_lobby foGameOption matches 1 run function fueoni:player/tplobby_all

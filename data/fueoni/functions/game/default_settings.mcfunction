@@ -9,5 +9,6 @@ execute unless score item_arrow foGameOption = item_arrow foGameOption run score
 execute unless score tp_lobby foGameOption = tp_lobby foGameOption run scoreboard players set tp_lobby foGameOption 1
 execute unless score oni_count foGameOption = oni_count foGameOption run scoreboard players set oni_count foGameOption 1
 execute unless score oni_release_seconds foGameOption = oni_release_seconds foGameOption run scoreboard players set oni_release_seconds foGameOption 15
+execute unless score oni_speed_seconds foGameOption = oni_speed_seconds foGameOption run scoreboard players set oni_speed_seconds foGameOption 25
 execute unless score game_seconds foGameOption = game_seconds foGameOption run scoreboard players set game_seconds foGameOption 240
 scoreboard players set sessionID foGameOption 0

@@ -8,7 +8,7 @@
                     "items": [
                         "minecraft:ender_eye"
                     ],
-                    "nbt": "{display:{Name:'{\"translate\":\"fueoni.item.see_through.name\",\"fallback\":\"透視の目\",\"color\":\"aqua\",\"bold\":true,\"italic\":false}'}}"
+                    "nbt": "{display:{Name:'{\"translate\":\"fueoni.item.see_through.name\",\"fallback\":\"透視の目\",\"color\":\"#B3E159\",\"bold\":true,\"italic\":false}'}}"
                 }
             }
         }

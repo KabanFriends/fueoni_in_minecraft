@@ -36,18 +36,18 @@ execute as @e[tag=foRemoveAllPlayers] run execute as @a[tag=foGamePlayer] at @s 
 execute as @e[tag=foRemoveAllPlayers] run execute as @a[tag=foGamePlayer,team=foGameJoinQueue] run function fueoni:player/quit
 
 #ADMIN ENTITY: START
+execute as @e[tag=foStart] run function fueoni:game/reset
 execute as @e[tag=foStart] at @s run function fueoni:game/start
 
 #ADMIN ENTITY: START ALL PLAYERS
+execute as @e[tag=foStartAllPlayers] run function fueoni:game/reset
 execute as @e[tag=foStartAllPlayers] run team join foGameJoinQueue @a[team=!foGameJoinQueue]
 execute as @e[tag=foStartAllPlayers] at @s run tag @a[tag=!foGamePlayer] add foGamePlayer
 execute as @e[tag=foStartAllPlayers] at @s run function fueoni:game/start
 
 #ADMIN ENTITY: END GAME
-execute as @e[tag=foEndGame] run function fueoni:game/reset
+execute as @e[tag=foEndGame] run function fueoni:game/end_game
 execute as @e[tag=foEndGame] run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
-execute as @e[tag=foEndGame] run kill @e[tag=foGameEntity]
-execute as @e[tag=foEndGame] run team join foGameJoinQueue @a[tag=foGamePlayer]
 
 #ADMIN ENTITY: GAME SETTINGS
 execute as @a[advancements={fueoni:spawn_egg/game_settings=true}] at @s run playsound minecraft:block.wooden_button.click_off voice @s ~ ~ ~ 2.5 2.0
@@ -86,10 +86,14 @@ execute as @a[scores={foSettingsTrigger=19}] run scoreboard players set item_fre
 execute as @a[scores={foSettingsTrigger=20}] run scoreboard players set item_frequency foGameOption 1
 execute as @a[scores={foSettingsTrigger=21}] run scoreboard players set item_frequency foGameOption 2
 
+#oni speed time settings
+execute as @a[scores={foSettingsTrigger=22}] if score oni_speed_seconds foGameOption matches 1.. run scoreboard players remove oni_speed_seconds foGameOption 1
+execute as @a[scores={foSettingsTrigger=23}] run scoreboard players add oni_speed_seconds foGameOption 1
+
 #resend settings
 tellraw @a[scores={foSettingsTrigger=1..21}] {"text":"\n\n\n\n"}
-execute as @a[scores={foSettingsTrigger=1..21}] at @s run playsound minecraft:block.note_block.hat voice @s ~ ~ ~ 1.0 1.2
-execute as @a[scores={foSettingsTrigger=1..21}] run function fueoni:player/game_settings
+execute as @a[scores={foSettingsTrigger=1..23}] at @s run playsound minecraft:block.note_block.hat voice @s ~ ~ ~ 1.0 1.2
+execute as @a[scores={foSettingsTrigger=1..23}] run function fueoni:player/game_settings
 
 execute as @a[scores={foSettingsTime=1..}] run scoreboard players remove @s foSettingsTime 1
 execute as @a[scores={foSettingsTime=..0}] run trigger foSettingsTrigger set 0

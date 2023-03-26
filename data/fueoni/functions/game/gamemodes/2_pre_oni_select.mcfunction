@@ -2,9 +2,9 @@
 #Made by KabanFriends
 
 scoreboard players add game_timer foGameData 1
-effect give @a[tag=foGamePlayer] resistance 1000000 127 true
-effect give @a[tag=foGamePlayer] instant_health 1000000 127 true
-effect give @a[tag=foGamePlayer] saturation 1000000 127 true
+effect give @a[tag=foGamePlayer] resistance infinite 127 true
+effect give @a[tag=foGamePlayer] instant_health infinite 127 true
+effect give @a[tag=foGamePlayer] saturation infinite 127 true
 execute if score game_timer foGameData matches 1 run scoreboard players set num_20 foGameData 20
 execute if score game_timer foGameData matches 1 run scoreboard players set game_timeleft foGameData 15
 execute if score game_timer foGameData matches 1 run scoreboard objectives setdisplay sidebar foListSidebar
