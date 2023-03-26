@@ -1,5 +1,5 @@
 # 増え鬼 in Minecraft
-使用可能なMnecraftのバージョン: **1.14～1.19.3**
+使用可能なMnecraftのバージョン: **1.14～1.19.4**
 **(次項の注意事項を必ず読んでください)**
 
 **増え鬼 in Minecraft**は、好きなMinecraftのワールドで「増え鬼」ゲームが遊べるデータパックです。
@@ -11,6 +11,7 @@
 データパックとMinecraftのバージョン対応表:
 | Minecraft | 増え鬼データパック |
 ----|----
+| 1.19.4 | [ver2.1.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/2.1.0) |
 | 1.19～1.19.3 | [ver2.0.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/2.0.0) |
 | 1.18～1.18.2 | [ver1.2.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.2.0) |
 | 1.17～1.17.1 | [ver1.1.0](https://github.com/KabanFriends/fueoni_in_minecraft/releases/tag/1.1.0) |
