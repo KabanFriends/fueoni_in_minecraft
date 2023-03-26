@@ -9,5 +9,3 @@ scoreboard objectives remove foItemSpawnTimer
 scoreboard objectives remove foItemSpawnId
 scoreboard objectives remove foItemSpawnType
 scoreboard objectives remove foSpawnTimerEnd
-scoreboard objectives remove foPlayerTickTemp1
-scoreboard objectives remove foPlayerTickTemp2
