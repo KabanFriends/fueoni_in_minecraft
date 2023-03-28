@@ -29,13 +29,15 @@ execute if score bar_sec foGameData matches ..9 run bossbar set fo_ingame name [
 execute if score bar_sec foGameData matches 10.. run bossbar set fo_ingame name [{"translate":"fueoni.bossbar.title","fallback":"残り時間: %1$s","color":"red","with":[[{"score":{"name":"bar_min","objective":"foGameData"},"color":"gold","bold":true},{"text":":","color":"gold","bold":true},{"score":{"name":"bar_sec","objective":"foGameData"},"color":"gold","bold":true}]]}]
 bossbar set fo_ingame players @a[tag=foGamePlayer]
 #death
+tag @a[tag=foGamePlayer,team=foRunner,scores={foDeathCount=1..}] add foSwitchRole
 team join foOni @a[tag=foGamePlayer,team=foRunner,scores={foDeathCount=1..}]
 scoreboard players reset @a[tag=foGamePlayer,scores={foDeathCount=1..}] foDeathCount
 #respawn
 clear @a[tag=foGamePlayer,team=foOni,scores={foAliveTime=2}]
 item replace entity @a[tag=foGamePlayer,team=foOni,scores={foAliveTime=2}] armor.chest with minecraft:leather_chestplate{display:{Name:'{"translate":"fueoni.item.oni_shirt.name","fallback":"鬼の服","color":"red","bold":true,"italic":false}',Lore:['{"translate":"fueoni.item.oni_shirt.lore.1","fallback":"トマトジュースで染まった","color":"gray","italic":false}','{"translate":"fueoni.item.oni_shirt.lore.2","fallback":"きれいな赤色！","color":"gray","italic":false}'],color:16711680},HideFlags:63,Unbreakable:1b,Enchantments:[{id:"minecraft:protection",lvl:127s},{id:"minecraft:binding_curse",lvl:1s},{id:"minecraft:vanishing_curse",lvl:1s}]}
 tp @a[tag=foGamePlayer,scores={foAliveTime=2}] @e[tag=foStartLocation,limit=1]
-execute as @a[tag=foGamePlayer,scores={foAliveTime=2}] run tellraw @s [{"text":""},{"translate":"fueoni.message.prefix","fallback":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray","bold":false},{"translate":"fueoni.message.game.caught","fallback":"つかまってしまった！","color":"red","bold":true},{"text":" "},{"translate":"fueoni.message.game.caught_message","fallback":"あなたは鬼になりました。"}]
+execute as @a[tag=foGamePlayer,scores={foAliveTime=2}] if entity @s[tag=foSwitchRole] run tellraw @s [{"text":""},{"translate":"fueoni.message.prefix","fallback":"増え鬼","color":"yellow","bold":true},{"text":" » ","color":"gray","bold":false},{"translate":"fueoni.message.game.caught","fallback":"つかまってしまった！","color":"red","bold":true},{"text":" "},{"translate":"fueoni.message.game.caught_message","fallback":"あなたは鬼になりました。"}]
+execute as @a[tag=foGamePlayer,scores={foAliveTime=2}] if entity @s[tag=foSwitchRole] run tag @s remove foSwitchRole
 scoreboard players set @a[tag=foGamePlayer,scores={foAliveTime=3..}] foAliveTime 3
 #set item
 scoreboard players add @e[tag=foItemEntity] foEntityTick 1
