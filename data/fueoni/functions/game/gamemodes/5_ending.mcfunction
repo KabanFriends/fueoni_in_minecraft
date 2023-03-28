@@ -13,4 +13,4 @@ execute if score game_timer foGameData matches 1 if score game_winner foGameData
 execute if score game_timer foGameData matches 1 if score game_winner foGameData matches 2 run title @a[tag=foGamePlayer] subtitle {"translate":"fueoni.title.ending.no_runner","fallback":"逃走者が全員つかまった！"}
 execute if score game_timer foGameData matches 1 if score game_winner foGameData matches 3 run title @a[tag=foGamePlayer] title {"translate":"fueoni.title.ending.runner_win","fallback":"逃走者の勝利","color":"green","bold":true}
 execute if score game_timer foGameData matches 1 if score game_winner foGameData matches 3 run title @a[tag=foGamePlayer] subtitle {"translate":"fueoni.title.ending.out_of_time","fallback":"制限時間切れになった！"}
-execute if score game_timer foGameData matches 100.. run function fueoni:game/end_game
+execute if score game_timer foGameData matches 100.. run function fueoni:game/reset

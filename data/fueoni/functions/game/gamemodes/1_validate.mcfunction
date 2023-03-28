@@ -28,6 +28,7 @@ execute if score game_checks foGameData matches 4.. run function fueoni:game/pre
 execute if score game_checks foGameData matches 4.. run tag @a[tag=foGamePlayer] add foOniSelection
 execute if score game_checks foGameData matches 4.. run gamemode adventure @a[tag=foGamePlayer]
 execute if score game_checks foGameData matches 4.. run clear @a[tag=foGamePlayer]
+execute if score game_checks foGameData matches 4.. run effect clear @a[tag=foGamePlayer]
 execute if score game_checks foGameData matches 4.. run scoreboard players add sessionID foGameOption 1
 execute if score game_checks foGameData matches 4.. run scoreboard players operation @a[tag=foGamePlayer] foPlayerSID = sessionID foGameOption
 execute if score game_checks foGameData matches 4.. run scoreboard objectives setdisplay sidebar foListSidebar

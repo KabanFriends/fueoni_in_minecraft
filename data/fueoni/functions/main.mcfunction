@@ -36,17 +36,15 @@ execute as @e[tag=foRemoveAllPlayers] run execute as @a[tag=foGamePlayer] at @s 
 execute as @e[tag=foRemoveAllPlayers] run execute as @a[tag=foGamePlayer,team=foGameJoinQueue] run function fueoni:player/quit
 
 #ADMIN ENTITY: START
-execute as @e[tag=foStart] run function fueoni:game/reset
 execute as @e[tag=foStart] at @s run function fueoni:game/start
 
 #ADMIN ENTITY: START ALL PLAYERS
-execute as @e[tag=foStartAllPlayers] run function fueoni:game/reset
 execute as @e[tag=foStartAllPlayers] run team join foGameJoinQueue @a[team=!foGameJoinQueue]
 execute as @e[tag=foStartAllPlayers] at @s run tag @a[tag=!foGamePlayer] add foGamePlayer
 execute as @e[tag=foStartAllPlayers] at @s run function fueoni:game/start
 
 #ADMIN ENTITY: END GAME
-execute as @e[tag=foEndGame] run function fueoni:game/end_game
+execute as @e[tag=foEndGame] run function fueoni:game/reset
 execute as @e[tag=foEndGame] run execute as @a[tag=foGamePlayer] at @s run playsound minecraft:block.note_block.bass voice @s ~ ~ ~ 1.0 1.0
 
 #ADMIN ENTITY: GAME SETTINGS

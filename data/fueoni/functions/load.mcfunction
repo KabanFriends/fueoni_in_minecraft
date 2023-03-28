@@ -4,6 +4,7 @@
 gamerule maxCommandChainLength 65536
 say 「増え鬼 in Minecraft」を準備しています…
 forceload add 0 0
+scoreboard objectives add foGameOption dummy
 scoreboard objectives add foInitTemp dummy
 scoreboard players set current_data_ver foInitTemp 2
 execute unless score init_ver foGameOption = current_data_ver foInitTemp run function fueoni:init
